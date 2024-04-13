@@ -1,0 +1,49 @@
+spring:
+    application:
+        name: auth-service
+
+    datasource:
+        url: jdbc:mysql://localhost:3306/auth
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.cj.jdbc.Driver
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                format_sql: true
+
+    servlet:
+        multipart:
+            max-file-size: 128KB
+            max-request-size: 128KB
+
+    security:
+        oauth2:
+            client:
+                registration:
+                    google:
+                        scope: email,profile #N?u không có cái này thì s? có exception: DefaultOidcUser cannot be cast to class CustomOAuth2User
+                        client-id: 778566546908-veh4c2m72etbcce7v6dc4uk67ef8b8b9.apps.googleusercontent.com
+                        client-secret: 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
+                        redirect-uri: http://localhost:8080/login/oauth2/code/google
+                        clientName: quiz-lab
+
+application:
+    security:
+        jwt:
+            secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+            expiration: 600000 # a day
+            refresh-token:
+                expiration: 604800000 # 7 days
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8761/eureka
+
+server:
+    port: 0
