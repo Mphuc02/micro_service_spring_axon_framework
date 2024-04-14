@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play quiz</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+	{% include "header.html" %}
+
+    <p style="display: none;" id="id">{{ id }}</p>
+
+    <div id="question"></div>
+
+    <script src="{% static 'js/Const.js' %}"></script>
+    <script src="{% static 'js/Authenticate.js' %}"></script>
+	<script>
+        // let authenticate = new Authenticate()
+        let constrant = new Const()
+        let id = $('#id').html()
+
+        let jwt = authenticate.getJwtFromCookie()
+        if(jwt == null)
+            window.location.href = "/login";
+
+		$.ajax({
+            url: constrant.quiz.playQuiz(id),
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${jwt}`
+            },
+            success: (data, textStatus, xhr) => {
+                if (xhr.status === 200) {
+                    $('#question').html(JSON.stringify(data))
+                } else {
+                    // Xử lý trường hợp lỗi khác
+                }
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                alert('Bạn phải đăng nhập thì mới chơi được quiz này')
+            }
+        })
+	</script>
+
+	
+</body>
+</html>

@@ -1,0 +1,11 @@
+
+]	java:S125"<This block of commented-out lines of code should be removed.(ªÁ¸ûÿÿÿÿ8ÿäìéí1
+Y
+java:S1611!"7Remove the parentheses around the "authorize" parameter(›±ğÖøÿÿÿÿ8åìéí1
+N
+java:S1602!",Remove useless curly braces around statement(›±ğÖøÿÿÿÿ8åìéí1
+X	java:S125)"<This block of commented-out lines of code should be removed.(Ç± ˆ8Ë¬—êí1
+^
+java:S32529"AUse static access with "java.net.InetAddress" for "getLocalHost".(ú”½¡8‹¢’êí1
+
+java:S1128"qRemove this unused import 'org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter'.(÷ìïŠ8Ğ¬—êí1
