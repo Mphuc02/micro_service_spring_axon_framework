@@ -23,6 +23,6 @@ public class AuthCommandRest {
         registerUser.setId(UUID.randomUUID());
         CreateUserCommand command = new CreateUserCommand(registerUser);
         commandGateway.sendAndWait(command);
-        return ResponseEntity.ok("123");
+        return ResponseEntity.ok("");
     }
 }

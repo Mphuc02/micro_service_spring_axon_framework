@@ -1,5 +1,6 @@
 package dev.auth_service.common.configuration;
 
+import dev.auth_service.common.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,21 +25,19 @@ public class SecurityConfig {
 //    private final LogoutHandler logoutHandler;
 //    private final CustomOAuth2UserService oAuth2UserService;
 //    private final OAuth2AuthenticateSuccessHandler oAuth2AuthenticateSuccessHandler;
-//
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> {
-                                    authorize
-                                    .requestMatchers("/login", "/registration", "/css/**", "/js/**", "/img/**", "/api/v1/auth/**", "/data-socket/**").permitAll()
-                                    .anyRequest().authenticated();
-                        }
-                )
+                                        authorize.requestMatchers("/**").permitAll();
+                })
 //                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider);
-//                .addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 //                .logout(logout ->
 //                        logout.logoutUrl("/api/v1/auth/logout")
 //                                .addLogoutHandler(logoutHandler)
@@ -52,17 +51,17 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() throws UnknownHostException {
-        Inet4Address address = (Inet4Address) Inet4Address.getLocalHost();
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin(String.format("http://%s:8888", address.getHostAddress()));
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration("/**", config);
-        return source;
-    }
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() throws UnknownHostException {
+//        Inet4Address address = (Inet4Address) Inet4Address.getLocalHost();
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        CorsConfiguration config = new CorsConfiguration();
+//        config.setAllowCredentials(true);
+//        config.addAllowedOrigin(String.format("http://%s:8888", address.getHostAddress()));
+//        config.addAllowedHeader("*");
+//        config.addAllowedMethod("*");
+//        source.registerCorsConfiguration("/**", config);
+//        return source;
+//    }
 }

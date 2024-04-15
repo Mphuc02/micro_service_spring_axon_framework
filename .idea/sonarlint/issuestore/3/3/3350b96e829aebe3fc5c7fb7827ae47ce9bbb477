@@ -1,11 +1,20 @@
 
-]	java:S125"<This block of commented-out lines of code should be removed.(ªÁ¸ûÿÿÿÿ8ÿäìéí1
+]	java:S125"<This block of commented-out lines of code should be removed.(ªÁ¸ûÿÿÿÿ8Šü½ùí1
 Y
-java:S1611!"7Remove the parentheses around the "authorize" parameter(›±ğÖøÿÿÿÿ8åìéí1
+java:S1611#"7Remove the parentheses around the "authorize" parameter(›±ğÖøÿÿÿÿ8Œü½ùí1
 N
-java:S1602!",Remove useless curly braces around statement(›±ğÖøÿÿÿÿ8åìéí1
-X	java:S125)"<This block of commented-out lines of code should be removed.(Ç± ˆ8Ë¬—êí1
-^
-java:S32529"AUse static access with "java.net.InetAddress" for "getLocalHost".(ú”½¡8‹¢’êí1
+java:S1602#",Remove useless curly braces around statement(›±ğÖøÿÿÿÿ8Œü½ùí1
+]	java:S125("<This block of commented-out lines of code should be removed.(¶²¿±ùÿÿÿÿ8ü½ùí1
+W	java:S1257"<This block of commented-out lines of code should be removed.(äëûI8ü½ùí1
 
-java:S1128"qRemove this unused import 'org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter'.(÷ìïŠ8Ğ¬—êí1
+java:S1128"qRemove this unused import 'org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter'.(÷ìïŠ8ü½ùí1
+g
+java:S1128"KRemove this unused import 'org.springframework.web.cors.CorsConfiguration'.(î¤·`8ü½ùí1
+s
+java:S1128"QRemove this unused import 'org.springframework.web.cors.CorsConfigurationSource'.(ŒºÏøşÿÿÿÿ8ü½ùí1
+{
+java:S1128"YRemove this unused import 'org.springframework.web.cors.UrlBasedCorsConfigurationSource'.(µ²İûùÿÿÿÿ8ü½ùí1
+T
+java:S1128"2Remove this unused import 'java.net.Inet4Address'.(ê…ÉÃúÿÿÿÿ8ü½ùí1
+\
+java:S1128":Remove this unused import 'java.net.UnknownHostException'.(Ú·¬˜úÿÿÿÿ8ü½ùí1

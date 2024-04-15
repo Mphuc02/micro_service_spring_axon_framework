@@ -1,6 +1,6 @@
 class Const{
     constructor(){
-        this.serverIp = "192.168.1.190"
+        this.serverIp = "192.168.90.13"
         this.frontEndUrl = `http://${this.serverIp}:8888`
         this.serverUrl = `http://${this.serverIp}:9000`
         this.authenticateUrl = {
