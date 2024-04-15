@@ -2,8 +2,8 @@ package dev.auth_service.command.event;
 
 import dev.auth_service.common.dto.UserDto;
 import dev.auth_service.common.entity.User;
-import dev.auth_service.common.model.Provider;
 import dev.auth_service.common.repository.UserRepository;
+import dev.common_service.model.Provider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;

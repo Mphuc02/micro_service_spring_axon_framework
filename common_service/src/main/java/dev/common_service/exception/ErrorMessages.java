@@ -11,7 +11,8 @@ public enum ErrorMessages implements ErrorMessage{
     CONTENT_CHOICE_NOT_VALID(400, "Content of choice must be not null"),
     QUESTION_CONTENT_NOT_BLANK(400, "Question content must not be blank"),
     QUIZ_NOT_EXIST(404, "Quiz with given id not exist"),
-    AUTHENTICATE_FAIL(404, "Username or password is incorrect");
+    AUTHENTICATE_FAIL(404, "Username or password is incorrect"),
+    JWT_NOT_INCLUDE(400, "Jwt didn't include in header request");
 
     private final int code;
     private final String message;

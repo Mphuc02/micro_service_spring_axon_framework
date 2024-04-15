@@ -1,6 +1,6 @@
 package dev.auth_service.common.entity;
 
-import dev.auth_service.common.model.Provider;
+import dev.common_service.model.Provider;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.JdbcType;
@@ -26,7 +26,7 @@ public class User implements UserDetails {
     @JdbcType(VarcharJdbcType.class)
     private UUID id;
 
-    @Column(name = "username", length = 20)
+    @Column(name = "username", length = 20, columnDefinition = "varchar(255) unique")
     private String userName;
 
     @Column(name = "password", length = 255)

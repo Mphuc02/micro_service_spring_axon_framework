@@ -1,4 +1,4 @@
-package dev.auth_service.common.model;
+package dev.common_service.model;
 
 public enum Provider {
     LOCAL, COGNITO, GOOGLE, GITHUB

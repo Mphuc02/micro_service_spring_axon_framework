@@ -5,9 +5,11 @@ import dev.auth_service.common.entity.User;
 import dev.auth_service.common.repository.UserRepository;
 import dev.auth_service.common.service.JwtService;
 import dev.auth_service.query.queries.AuthenticateQuery;
+import dev.auth_service.query.queries.GetAuthenticationQuery;
 import dev.common_service.exception.BadRequestException;
 import dev.common_service.exception.ErrorMessages;
 import dev.common_service.exception.NotFoundException;
+import dev.common_service.model.UserCommon;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.queryhandling.QueryHandler;
@@ -16,6 +18,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
+
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -37,12 +41,31 @@ public class UserProjections {
             log.error("Authenticate exception" ,e);
             throw new BadRequestException(ErrorMessages.AUTHENTICATE_FAIL);
         }
-        return jwtService.generateToken(findUserEntityByUserName(authenticateUser.getUserName()));
+        return jwtService.generateToken(findUserByUserName(authenticateUser.getUserName()));
     }
 
-    private User findUserEntityByUserName(String userName){
-        return this.userRepository
+    @QueryHandler
+    public UserCommon query(GetAuthenticationQuery query){
+        String token = query.getJwtToken();
+        UUID userId = UUID.fromString(jwtService.extractID(token));
+        User findEntity = findUserById(userId);
+
+        return UserCommon.builder()
+                .id(findEntity.getId())
+                .fullName(findEntity.getFullName())
+                .provider(findEntity.getProvider())
+                .build();
+    }
+
+    private User findUserByUserName(String userName){
+        return userRepository
                 .findByUserName(userName)
+                .orElseThrow(() -> new NotFoundException(ErrorMessages.AUTHENTICATE_FAIL));
+    }
+
+    private User findUserById(UUID id){
+        return userRepository
+                .findById(id)
                 .orElseThrow(() -> new NotFoundException(ErrorMessages.AUTHENTICATE_FAIL));
     }
 }

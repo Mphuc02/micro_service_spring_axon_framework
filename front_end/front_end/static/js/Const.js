@@ -1,6 +1,6 @@
 class Const{
     constructor(){
-        this.serverIp = "192.168.90.13"
+        this.serverIp = "192.168.1.190"
         this.frontEndUrl = `http://${this.serverIp}:8888`
         this.serverUrl = `http://${this.serverIp}:9000`
         this.authenticateUrl = {
@@ -16,7 +16,7 @@ class Const{
             }
         },
         this.userUrl = {
-            user: this.serverUrl + "/api/v1/user",
+            user: this.serverUrl + "/api/v1/auth",
             authenticated: () => {
                 return this.userUrl.user + "/authenticated"
             }

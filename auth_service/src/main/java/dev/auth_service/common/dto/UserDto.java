@@ -2,7 +2,7 @@ package dev.auth_service.common.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import dev.auth_service.common.entity.User;
-import dev.auth_service.common.model.Provider;
+import dev.common_service.model.Provider;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,7 +47,7 @@ public class UserDto {
                 ", email='" + email + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", gender=" + gender +
-                ", provider=" + provider +
+//                ", provider=" + provider +
                 '}';
     }
 }

@@ -2,6 +2,7 @@ package dev.auth_service.common.service;
 
 import dev.auth_service.common.constranst.Const.*;
 import dev.auth_service.common.entity.User;
+import dev.common_service.model.UserCommon;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

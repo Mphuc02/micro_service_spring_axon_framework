@@ -1,5 +1,6 @@
 package dev.auth_service.common.model;
 
+import dev.common_service.model.Provider;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

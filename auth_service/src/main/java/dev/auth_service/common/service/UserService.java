@@ -1,24 +1,6 @@
 package dev.auth_service.common.service;
 
-import dev.auth_service.common.dto.UserDto;
-import dev.auth_service.common.entity.User;
-import dev.auth_service.common.model.Provider;
-import dev.auth_service.common.repository.UserRepository;
-import dev.common_service.exception.BadRequestException;
-import dev.common_service.exception.ErrorMessages;
-import dev.common_service.exception.NotFoundException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
-import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class UserService{
