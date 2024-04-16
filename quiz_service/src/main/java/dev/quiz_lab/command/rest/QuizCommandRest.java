@@ -1,0 +1,37 @@
+package dev.quiz_lab.command.rest;
+
+import dev.common_service.exception.ObjectPropertiesException;
+import dev.quiz_lab.command.command.CreateQuizCommand;
+import dev.quiz_lab.common.dto.QuizDTO;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.UUID;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/ap1/v1/quiz")
+public class QuizCommandRest {
+    private final CommandGateway commandGateway;
+
+    @PostMapping()
+    public ResponseEntity<Object> save(@RequestPart MultipartFile file,
+                                       @Valid @RequestPart QuizDTO quiz,
+                                       BindingResult result){
+        if(result.hasErrors()){
+            throw new ObjectPropertiesException(result.getAllErrors());
+        }
+
+        quiz.setId(UUID.randomUUID());
+        CreateQuizCommand command = new CreateQuizCommand(quiz, file);
+        return ResponseEntity.ok(quizService.save(file, quiz));
+    }
+}
