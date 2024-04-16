@@ -11,6 +11,7 @@ import dev.common_service.exception.ErrorMessages;
 import dev.common_service.exception.NotFoundException;
 import dev.common_service.model.UserCommon;
 import dev.common_service.queries.AuthenticationCommonQuery;
+import io.jsonwebtoken.MalformedJwtException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.queryhandling.QueryHandler;
@@ -56,13 +57,15 @@ public class UserProjections {
     }
 
     private UserCommon getUserFromJwt(String token){
-        UUID userId = UUID.fromString(jwtService.extractID(token));
-        User findEntity = findUserById(userId);
+        User user = jwtService.isTokenValid(token);
+
+        if(user == null)
+            return null;
 
         return UserCommon.builder()
-                .id(findEntity.getId())
-                .fullName(findEntity.getFullName())
-                .provider(findEntity.getProvider())
+                .id(user.getId())
+                .fullName(user.getFullName())
+                .provider(user.getProvider())
                 .build();
     }
 

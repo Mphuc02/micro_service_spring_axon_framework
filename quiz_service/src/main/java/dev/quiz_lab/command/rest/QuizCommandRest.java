@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +19,12 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/ap1/v1/quiz")
+@RequestMapping("/api/v1/quiz")
 public class QuizCommandRest {
     private final CommandGateway commandGateway;
 
     @PostMapping()
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<Object> save(@RequestPart MultipartFile file,
                                        @Valid @RequestPart QuizDTO quiz,
                                        BindingResult result){
@@ -32,6 +34,7 @@ public class QuizCommandRest {
 
         quiz.setId(UUID.randomUUID());
         CreateQuizCommand command = new CreateQuizCommand(quiz, file);
-        return ResponseEntity.ok(quizService.save(file, quiz));
+        commandGateway.sendAndWait(command);
+        return ResponseEntity.ok("");
     }
 }

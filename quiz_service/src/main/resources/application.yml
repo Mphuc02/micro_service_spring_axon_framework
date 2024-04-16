@@ -22,4 +22,4 @@ eureka:
         lease-renewal-interval-in-seconds: 5
         lease-expiration-duration-in-seconds: 5
 server:
-    port: 0
+    port: 9002

@@ -16,7 +16,7 @@ public class QuizAggregate {
 
     @CommandHandler
     public QuizAggregate(CreateQuizCommand command){
-        QuizCreatedEvent event = new QuizCreatedEvent(command.getQuiz());
+        QuizCreatedEvent event = new QuizCreatedEvent(command.getQuiz(), command.getFile());
         AggregateLifecycle.apply(event);
     }
 

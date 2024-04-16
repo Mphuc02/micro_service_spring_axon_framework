@@ -101,3 +101,13 @@ y
 Iquiz_service/src/main/java/dev/quiz_lab/command/rest/QuizCommandRest.java,2\8\28c891a8826a8c39ed01f7a5f505a2a304487497
 q
 Aquiz_service/src/main/java/dev/quiz_lab/common/rest/QuizRest.java,d\e\deaa9588ab7e3a538fc30e5b6193d0d32bfb8486
+y
+Iquiz_service/src/main/java/dev/quiz_lab/common/config/SecurityConfig.java,0\d\0d464b4a9fa877ba0767da7d5d0d85c0f8c174a8
+o
+?quiz_service/src/main/java/dev/quiz_lab/QuizLabApplication.java,c\0\c05cc2648791931f8c6eb7efcb4b72617e5e9286
+~
+Nquiz_service/src/main/java/dev/quiz_lab/command/rest/ExceptionRestHandler.java,2\3\236e7903473f42cfc11449b03029ee7efbe2aa9f
+u
+Equiz_service/src/main/java/dev/quiz_lab/common/constant/ApiConst.java,f\3\f386826cc9df23acbbd5ca91d86491f68dfc7357
+r
+Bquiz_service/src/main/java/dev/quiz_lab/common/constant/Const.java,9\e\9ec7f001837a86df0ea6fee6c968a27c99855dc3

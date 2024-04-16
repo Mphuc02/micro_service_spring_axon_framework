@@ -1,0 +1,22 @@
+
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ïú¤Ìùÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(è­õüıÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(«®Ûòùÿÿÿÿ
+g	java:S101#"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¡íâ¥øÿÿÿÿ
+O
+java:S1118	":Add a private constructor to hide the implicit public one.(ÈÏİP
+U
+java:S1118":Add a private constructor to hide the implicit public one.(Ïú¤Ìùÿÿÿÿ
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØÁÉ
+V
+java:S3457"AFormat specifiers should be used instead of string concatenation.(‹‚²;
+V
+java:S3252"AUse static access with "java.net.InetAddress" for "getLocalHost".(‹‚²;
+U
+java:S1118":Add a private constructor to hide the implicit public one.(è­õüıÿÿÿÿ
+U
+java:S1118":Add a private constructor to hide the implicit public one.(«®Ûòùÿÿÿÿ
+U
+java:S1118#":Add a private constructor to hide the implicit public one.(¡íâ¥øÿÿÿÿ
+c	java:S100$"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê÷¶¾

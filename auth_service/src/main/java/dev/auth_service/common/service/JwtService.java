@@ -2,12 +2,12 @@ package dev.auth_service.common.service;
 
 import dev.auth_service.common.constranst.Const.*;
 import dev.auth_service.common.entity.User;
-import dev.common_service.model.UserCommon;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import dev.auth_service.common.repository.UserRepository;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.security.Key;
@@ -18,6 +18,8 @@ import java.util.UUID;
 import java.util.function.Function;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class JwtService {
     @Value(JWT.SECRET_KEY)
     private String secretKey;
@@ -27,6 +29,8 @@ public class JwtService {
 
     @Value(JWT.REFRESH_TOKEN_EXPIRATION)
     private long refreshExpiration;
+
+    private final UserRepository userRepository;
 
     public String extractID(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -41,7 +45,8 @@ public class JwtService {
             User user
     ) {
         Map<String, Object> extraClaims = new HashMap<>();
-        extraClaims.put("PROVIDER", user.getProvider());
+        extraClaims.put("fullName", user.getFullName());
+        extraClaims.put("provider", user.getProvider());
         return buildToken(extraClaims, user.getId(), jwtExpiration);
     }
 
@@ -67,10 +72,28 @@ public class JwtService {
                 .compact();
     }
 
-    public boolean isTokenValid(String token, User user) {
-        final String id = extractID(token);
-        //Todo: Check fullName in token is correct
-        return (id.equals(user.getId().toString())) && !isTokenExpired(token);
+    public User isTokenValid(String token){
+        UUID userId;
+        try{
+            userId = UUID.fromString(extractID(token));
+        }catch (MalformedJwtException | ExpiredJwtException e){
+            log.error("Jwt exception", e);
+            return null;
+        }
+
+        User user = userRepository.findById(userId).orElse(null);
+
+        if(user != null){
+            Claims claims = extractAllClaims(token);
+            String fullName = claims.get("fullName").toString();
+            String provider = claims.get("provider").toString();
+
+            if(!fullName.equals(user.getFullName()) ||
+                provider.equals(user.getProvider().toString())){
+                return null;
+            }
+        }
+        return user;
     }
 
     private boolean isTokenExpired(String token) {

@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.nio.file.AccessDeniedException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,5 +34,11 @@ public class ExceptionRestHandler {
     public ResponseEntity<Object> handler(NotFoundException ex){
         log.error("Not found exception by: " + ex.getErrorMessage(), ex);
         return new ResponseEntity<>(ex.getErrorMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<Object> handler(AccessDeniedException ex){
+        log.error("Forbidden exception", ex);
+        return new ResponseEntity<>("You must to log in to use this api", HttpStatus.FORBIDDEN);
     }
 }
