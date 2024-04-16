@@ -10,6 +10,7 @@ import dev.common_service.exception.BadRequestException;
 import dev.common_service.exception.ErrorMessages;
 import dev.common_service.exception.NotFoundException;
 import dev.common_service.model.UserCommon;
+import dev.common_service.queries.AuthenticationCommonQuery;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.queryhandling.QueryHandler;
@@ -46,7 +47,15 @@ public class UserProjections {
 
     @QueryHandler
     public UserCommon query(GetAuthenticationQuery query){
-        String token = query.getJwtToken();
+        return getUserFromJwt(query.getJwtToken());
+    }
+
+    @QueryHandler
+    public UserCommon query(AuthenticationCommonQuery query){
+        return getUserFromJwt(query.getJwtToken());
+    }
+
+    private UserCommon getUserFromJwt(String token){
         UUID userId = UUID.fromString(jwtService.extractID(token));
         User findEntity = findUserById(userId);
 

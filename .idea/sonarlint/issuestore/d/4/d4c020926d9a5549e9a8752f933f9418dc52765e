@@ -1,14 +1,13 @@
 
-n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÉÔşùÿÿÿÿ8áªÎèí1
+n	java:S101
+"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÉÔşùÿÿÿÿ8áªÎèí1
 V
 java:S1118":Add a private constructor to hide the implicit public one.(ÈÏİP8âªÎèí1
 \
 java:S1118":Add a private constructor to hide the implicit public one.(ı§Û„ùÿÿÿÿ8ãªÎèí1
 \
 java:S1118
-":Add a private constructor to hide the implicit public one.(ßÓßËûÿÿÿÿ8äªÎèí1
+":Add a private constructor to hide the implicit public one.(ÉÔşùÿÿÿÿ8äªÎèí1
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ëç´ûÿÿÿÿ8»’Â‡î1
 \
-java:S1118":Add a private constructor to hide the implicit public one.(ÉÔşùÿÿÿÿ8äªÎèí1
-{	java:S115!"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ëç´ûÿÿÿÿ8»’Â‡î1
-\
-java:S1118":Add a private constructor to hide the implicit public one.(×¦­âûÿÿÿÿ8»’Â‡î1
+java:S1118":Add a private constructor to hide the implicit public one.(×¦­âûÿÿÿÿ8»’Â‡î1

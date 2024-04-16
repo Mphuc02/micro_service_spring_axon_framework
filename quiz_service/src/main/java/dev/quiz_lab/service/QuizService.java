@@ -1,9 +1,9 @@
 package dev.quiz_lab.service;
 
+import dev.common_service.exception.ErrorMessages;
+import dev.common_service.exception.NotFoundException;
 import dev.quiz_lab.dto.QuizDTO;
 import dev.quiz_lab.entity.Quiz;
-import dev.quiz_lab.exception.ErrorMessages;
-import dev.quiz_lab.exception.NotFoundException;
 import dev.quiz_lab.repository.QuizRepository;
 import dev.quiz_lab.util.ExcelUtil;
 import lombok.RequiredArgsConstructor;

@@ -29,7 +29,6 @@ public class Quiz {
     @Column(columnDefinition = "JSON")
     private String participants;
 
-    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
-    private User author;
+    private UUID author;
 }

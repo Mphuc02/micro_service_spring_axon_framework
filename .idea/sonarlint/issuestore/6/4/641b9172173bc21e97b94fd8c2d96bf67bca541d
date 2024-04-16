@@ -21,3 +21,5 @@ X
 java:S1874Y"6Remove this use of "parseClaimsJws"; it is deprecated.(ëÙ–ºıÿÿÿÿ8ê€ş‡î1
 L
 java:S1874Z"/Remove this use of "getBody"; it is deprecated.(ÊÄ¿Ì8ê€ş‡î1
+]
+java:S1128"@Remove this unused import 'dev.common_service.model.UserCommon'.(ÌŠå8€¨î£î1

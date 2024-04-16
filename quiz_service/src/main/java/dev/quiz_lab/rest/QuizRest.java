@@ -1,8 +1,8 @@
 package dev.quiz_lab.rest;
 
+import dev.common_service.exception.ObjectPropertiesException;
 import dev.quiz_lab.constant.Const.*;
 import dev.quiz_lab.dto.QuizDTO;
-import dev.quiz_lab.exception.ObjectPropertiesException;
 import dev.quiz_lab.service.QuizService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

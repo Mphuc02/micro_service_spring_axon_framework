@@ -2,6 +2,7 @@ package dev.quiz_lab.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.google.gson.Gson;
+import dev.common_service.model.UserCommon;
 import dev.quiz_lab.entity.Quiz;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -28,6 +29,8 @@ public class QuizDTO {
 
     @NotEmpty(message = "Must have at least 1 participant")
     private Set<String> participants;
+
+    private UserCommon author;
 
     public QuizDTO(Quiz entity){
         if(entity != null){
