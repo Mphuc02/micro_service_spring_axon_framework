@@ -9,5 +9,5 @@ import org.springframework.web.multipart.MultipartFile;
 @Getter
 public class QuizCreatedEvent {
     private QuizDTO quiz;
-    private MultipartFile file;
+    private byte[] data;
 }

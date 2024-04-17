@@ -11,7 +11,8 @@ public class AxonConfig {
         XStream xStream = new XStream();
         xStream.allowTypesByWildcard(new String[] {
                 "dev.common_service.**",
-                "dev.auth_service.**"//Tên package
+                "dev.auth_service.**",//Tên package
+                "dev.quiz_lab.**"
         });
         //Không có cấu hình này thì sẽ xảy ra lỗi Xstream.ForbiddenClass
         return xStream;

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @RestController
@@ -27,13 +28,13 @@ public class QuizCommandRest {
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<Object> save(@RequestPart MultipartFile file,
                                        @Valid @RequestPart QuizDTO quiz,
-                                       BindingResult result){
+                                       BindingResult result) throws IOException {
         if(result.hasErrors()){
             throw new ObjectPropertiesException(result.getAllErrors());
         }
 
         quiz.setId(UUID.randomUUID());
-        CreateQuizCommand command = new CreateQuizCommand(quiz, file);
+        CreateQuizCommand command = new CreateQuizCommand(quiz, file.getBytes());
         commandGateway.sendAndWait(command);
         return ResponseEntity.ok("");
     }

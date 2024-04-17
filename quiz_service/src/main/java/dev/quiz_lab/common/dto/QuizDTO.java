@@ -52,4 +52,15 @@ public class QuizDTO {
                 .participants(new Gson().toJson(this.participants))
                 .build();
     }
+
+    @Override
+    public String toString() {
+        return "QuizDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", questions=" + questions +
+                ", participants=" + participants +
+                ", author=" + author +
+                '}';
+    }
 }

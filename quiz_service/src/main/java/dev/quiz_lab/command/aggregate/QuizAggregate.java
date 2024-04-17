@@ -6,17 +6,19 @@ import dev.quiz_lab.common.dto.QuizDTO;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
+import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 
 @Aggregate
 @RequiredArgsConstructor
 public class QuizAggregate {
+    @AggregateIdentifier
     private QuizDTO quiz;
 
     @CommandHandler
     public QuizAggregate(CreateQuizCommand command){
-        QuizCreatedEvent event = new QuizCreatedEvent(command.getQuiz(), command.getFile());
+        QuizCreatedEvent event = new QuizCreatedEvent(command.getQuiz(), command.getData());
         AggregateLifecycle.apply(event);
     }
 

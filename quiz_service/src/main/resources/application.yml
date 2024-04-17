@@ -21,5 +21,6 @@ eureka:
     instance:
         lease-renewal-interval-in-seconds: 5
         lease-expiration-duration-in-seconds: 5
+        hostname: localhost
 server:
-    port: 9002
+    port: 0

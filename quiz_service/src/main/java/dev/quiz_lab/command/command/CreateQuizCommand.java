@@ -11,5 +11,5 @@ import org.springframework.web.multipart.MultipartFile;
 public class CreateQuizCommand {
     @TargetAggregateIdentifier
     private QuizDTO quiz;
-    private MultipartFile file;
+    private byte[] data;
 }

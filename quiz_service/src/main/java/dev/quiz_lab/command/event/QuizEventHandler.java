@@ -20,7 +20,7 @@ public class QuizEventHandler {
     @EventHandler
     public String handler(QuizCreatedEvent event){
         Quiz entity = event.getQuiz().mapToEntity();
-        entity.setQuestions(excelUtil.getFromFile(event.getFile(), entity));
+//        entity.setQuestions(excelUtil.getFromFile(event.getFile(), entity));
 
         UserCommon user = (UserCommon) SecurityContextHolder.getContext().getAuthentication();
         entity.setAuthor(user.getId());
