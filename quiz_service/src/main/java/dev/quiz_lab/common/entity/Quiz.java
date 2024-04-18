@@ -30,5 +30,6 @@ public class Quiz {
     private String participants;
 
     @JoinColumn(name = "author_id")
+    @JdbcType(VarcharJdbcType.class)
     private UUID author;
 }

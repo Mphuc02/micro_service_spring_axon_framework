@@ -1,5 +1,6 @@
 package dev.quiz_lab.command.aggregate;
 
+import dev.common_service.exception.BadRequestException;
 import dev.quiz_lab.command.command.CreateQuizCommand;
 import dev.quiz_lab.command.event.QuizCreatedEvent;
 import dev.quiz_lab.common.dto.QuizDTO;
@@ -18,7 +19,7 @@ public class QuizAggregate {
 
     @CommandHandler
     public QuizAggregate(CreateQuizCommand command){
-        QuizCreatedEvent event = new QuizCreatedEvent(command.getQuiz(), command.getData());
+        QuizCreatedEvent event = new QuizCreatedEvent(command.getQuiz(), command.getData(), command.getOwner());
         AggregateLifecycle.apply(event);
     }
 

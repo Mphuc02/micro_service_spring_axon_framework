@@ -27,15 +27,15 @@ public class QuizService {
                                     .toList();
     }
 
-    public String save(MultipartFile file, QuizDTO quiz){
-        //Todo: Xác định chủ sở hữu của quiz
-
-        Quiz entity = quiz.mapToEntity();
-        entity.setQuestions(excelUtil.getFromFile(file, entity));
-        entity = this.quizRepository.save(entity);
-        log.info("Save new quiz succesfully");
-        return entity.getId().toString();
-    }
+//    public String save(MultipartFile file, QuizDTO quiz){
+//        //Todo: Xác định chủ sở hữu của quiz
+//
+//        Quiz entity = quiz.mapToEntity();
+//        entity.setQuestions(excelUtil.getFromFile(file.getBytes(), entity));
+//        entity = this.quizRepository.save(entity);
+//        log.info("Save new quiz succesfully");
+//        return entity.getId().toString();
+//    }
 
     public QuizDTO findById(UUID id){
         Quiz entity = quizRepository.findById(id).orElseThrow(() -> new NotFoundException(ErrorMessages.QUIZ_NOT_EXIST));

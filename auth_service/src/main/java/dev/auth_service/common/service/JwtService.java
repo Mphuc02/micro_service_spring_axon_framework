@@ -88,8 +88,8 @@ public class JwtService {
             String fullName = claims.get("fullName").toString();
             String provider = claims.get("provider").toString();
 
-            if(!fullName.equals(user.getFullName()) ||
-                provider.equals(user.getProvider().toString())){
+            if( !fullName.equals(user.getFullName()) ||
+                !provider.equals(user.getProvider().toString())){
                 return null;
             }
         }

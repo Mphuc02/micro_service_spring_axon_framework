@@ -13,7 +13,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
-import org.springframework.web.multipart.MultipartFile;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,10 +23,10 @@ import java.util.UUID;
 @Component
 @Slf4j
 public class ExcelUtil {
-    public List<Question> getFromFile(MultipartFile file, Quiz quiz){
+    public List<Question> getFromFile(byte[] data, Quiz quiz){
         quiz.setId(UUID.randomUUID());
         List<Question> questions = new ArrayList<>();
-        try(Workbook workbook = WorkbookFactory.create(file.getInputStream())
+        try(Workbook workbook = WorkbookFactory.create(new ByteArrayInputStream(data))
         ) {
             Sheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rows = sheet.rowIterator();
