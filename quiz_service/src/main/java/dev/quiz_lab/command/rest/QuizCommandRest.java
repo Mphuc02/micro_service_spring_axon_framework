@@ -31,9 +31,9 @@ public class QuizCommandRest {
 
     @PostMapping()
     @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<Object>save(@RequestPart MultipartFile file,
-                                                          @Valid @RequestPart QuizDTO quiz,
-                                                          BindingResult result) throws IOException{
+    public ResponseEntity<?>save(@RequestPart MultipartFile file,
+                                @Valid @RequestPart QuizDTO quiz,
+                                BindingResult result) throws IOException{
 
         if(result.hasErrors()){
             throw new ObjectPropertiesException(result.getAllErrors());

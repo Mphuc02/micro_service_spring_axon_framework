@@ -4,10 +4,6 @@ import com.google.gson.Gson;
 import dev.common_service.exception.BadRequestException;
 import dev.common_service.exception.ErrorMessages;
 import dev.common_service.exception.NotFoundException;
-import dev.common_service.exception.ObjectPropertiesException;
-import dev.common_service.handler.ExceptionRestHandler;
-import dev.common_service.queries.CheckUsersExistQuery;
-import dev.common_service.response.UsersExistResponse;
 import dev.quiz_lab.common.entity.Quiz;
 import dev.quiz_lab.common.repository.QuizRepository;
 import dev.quiz_lab.common.util.ExcelUtil;
@@ -28,7 +24,6 @@ import java.util.List;
 public class QuizEventHandler {
     private final QuizRepository quizRepository;
     private final ExcelUtil excelUtil;
-    private final QueryGateway queryGateway;
 
     @EventHandler
     public void handler(QuizCreatedEvent event){
