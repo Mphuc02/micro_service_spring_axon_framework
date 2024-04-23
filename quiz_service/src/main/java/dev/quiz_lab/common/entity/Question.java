@@ -16,7 +16,6 @@ import java.util.UUID;
 @Builder
 public class Question {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @JdbcType(VarcharJdbcType.class)
     private UUID id;
 

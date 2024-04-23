@@ -13,8 +13,8 @@ import java.util.Date;
 @Getter
 public class CreateQuizCommand extends BaseCommand {
     @TargetAggregateIdentifier
-    private QuizDTO quiz;
-    private byte[] data;
+    private final QuizDTO quiz;
+    private final byte[] data;
 
     public CreateQuizCommand(QuizDTO quiz, byte[] data, UserCommon owner){
         this.quiz = quiz;

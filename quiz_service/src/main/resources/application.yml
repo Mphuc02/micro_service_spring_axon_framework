@@ -24,7 +24,7 @@ eureka:
         hostname: localhost
 
 server:
-    port: 0
+    port: 9003
 
 axon:
     axonserver:

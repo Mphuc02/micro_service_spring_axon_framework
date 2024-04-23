@@ -24,7 +24,6 @@ import java.util.UUID;
 @Slf4j
 public class ExcelUtil {
     public List<Question> getFromFile(byte[] data, Quiz quiz){
-        quiz.setId(UUID.randomUUID());
         List<Question> questions = new ArrayList<>();
         try(Workbook workbook = WorkbookFactory.create(new ByteArrayInputStream(data))
         ) {

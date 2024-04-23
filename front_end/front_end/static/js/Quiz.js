@@ -72,7 +72,7 @@ class Quiz{
             data: quiz,
             success: (data, textStatus, xhr) => {
                 if (xhr.status === 200) {
-                    window.location.href = "/invite/" + xhr.responseText;
+                    window.location.href = "/invite/" + xhr.responseText.replaceAll('"', '');
                 } else {
 
                 }

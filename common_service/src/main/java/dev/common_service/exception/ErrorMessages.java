@@ -12,17 +12,18 @@ public enum ErrorMessages implements ErrorMessage{
     QUESTION_CONTENT_NOT_BLANK(400, "Question content must not be blank"),
     QUIZ_NOT_EXIST(404, "Quiz with given id not exist"),
     AUTHENTICATE_FAIL(404, "Username or password is incorrect"),
-    JWT_NOT_INCLUDE(400, "Jwt didn't include in header request");
+    JWT_NOT_INCLUDE(400, "Jwt didn't include in header request"),
+    NOT_QUIZ_OWNER(400, "You don't own this quiz");
 
     private final int code;
     private final String message;
     @Override
     public int getCode() {
-        return 0;
+        return code;
     }
 
     @Override
     public String getMessage() {
-        return null;
+        return message;
     }
 }
