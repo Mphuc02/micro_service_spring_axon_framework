@@ -78,7 +78,13 @@ class Quiz{
                 }
             },
             error: function(xhr, textStatus, errorThrown) {
-                alert(xhr.responseText)
+                let error = xhr.responseJSON
+                if(error.participants != null){
+                    alert('Users in below list are not exist: \n' + error.participants)
+                }
+                else{
+                    alert(xhr.responseText)
+                }
             }
         })
     } 

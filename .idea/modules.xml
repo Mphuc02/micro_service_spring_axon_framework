@@ -3,11 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/api_gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/api_gateway.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth_service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/auth_service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth.main.iml" filepath="$PROJECT_DIR$/.idea/modules/auth.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/common_service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/common_service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery_server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery_server.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/quiz.main.iml" filepath="$PROJECT_DIR$/.idea/modules/quiz.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/quiz_built_in_micro_service.iml" filepath="$PROJECT_DIR$/.idea/quiz_built_in_micro_service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/quiz_service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/quiz_service.main.iml" />
     </modules>
   </component>
 </project>

@@ -8,9 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.security.access.AccessDeniedException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 
 @RestControllerAdvice
 @Slf4j
@@ -18,9 +15,7 @@ public class ExceptionRestHandler {
     @ExceptionHandler(ObjectPropertiesException.class)
     public ResponseEntity<Object> handler(ObjectPropertiesException ex){
         log.error("Object's property not valid: ", ex);
-        Map<String, String> result = new HashMap<>();
-        ex.getErrors().forEach(error -> result.put(error.getObjectName(), error.getDefaultMessage()));
-        return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ex.getErrors(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(BadRequestException.class)
@@ -43,10 +38,13 @@ public class ExceptionRestHandler {
 
     @ExceptionHandler(CommandExecutionException.class)
     public ResponseEntity<Object> handler(CommandExecutionException ex){
-        Optional<ErrorMessages> optional = ex.getDetails();
-        if(optional.isPresent()){
-            ErrorMessages error = optional.get();
-            return new ResponseEntity<>(error.getMessage(), HttpStatus.BAD_REQUEST);
+        if(ex.getDetails().isPresent()){
+            if(ex.getDetails().get() instanceof ErrorMessage){
+                ErrorMessages error = (ErrorMessages) ex.getDetails().get();
+                return new ResponseEntity<>(error.getMessage(), HttpStatus.BAD_REQUEST);
+            }
+
+            return new ResponseEntity<>(ex.getDetails().get(), HttpStatus.BAD_REQUEST);
         }
 
         return new ResponseEntity<>("Exception when excute event", HttpStatus.BAD_REQUEST);
