@@ -52,23 +52,30 @@
 -Nhập các thông tin cần thiết
 -Bấm nút đăng bài quiz<br>
 **-Kiểm tra tính hợp lệ của bài quiz<br>**
+**-Lấy thông tin người gửi người gửi quiz<br>**
 **-Lưu thông tin bài quiz vào cơ sở dữ liệu<br>**
 - Hiển thị trang mời tham gia bài quiz gồm có đường dẫn tới trang nhằm chơi bài quiz này và 1 mã qr đại diện cho đường link đó
 
 Các hành động bất khả tri được phân loại như các ứng viên năng lực dịch vụ sơ bộ và được nhóm vào các service thành phần tương ứng như sau:
 - Dịch vụ Xác thực:
-  * Lấy thông tin người dùng đã đăng nhập
+  * Hành động Lấy thông tin người gửi quiz được xem như là một năng lực dịch vụ có tên **getAuthenticatedInfo** là 1 phần của thực thể dịch vụ có tên Auth<br>
+    ![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/1341763f-b339-4f18-877e-d7713c281ea1)
+
 - Dịch vụ Quiz:
-  * Lưu thông tin bài quiz
+  * Lưu thông tin bài quiz vào cơ sở dữ liệu là hành động ứng viên cho thực thể dịch vụ có tên Quiz<br>
+  ![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/17cc4d37-350c-404a-8a6d-81a4ac54162b)
+
 
 #### Bước 4: Logic cụ thể của Quy trình
- 	Logic đặc thù quy trình được phân chia thành một lớp dịch vụ logic riêng. Đối với một quy trình nghiệp vụ cụ thể, loại logic này thường được nhóm lại thành một dịch vụ nhiệm vụ hoặc một người tiêu dùng đóng vai trò là điều khiển sự kết hợp
-
 **-Kiểm tra tính hợp lệ của bài quiz<br>**
 **-Lưu thông tin bài quiz vào cơ sở dữ liệu<br>**
 
-- Dịch vụ Quiz
-  * Save
+Các hành động sau xảy ra bên trong Task service Create Quiz
+- Lấy thông tin người gửi là ai, nếu người dùng không đăng nhập thì kết thúc
+- Khởi tạo 1 bài quiz
+- Kiểm tra tên của bài quiz, nếu không hợp lệ thì kết thúc
+- Đọc file excel để lấy ra danh sách các câu hỏi của bài quiz, nếu file không hợp lệ hoặc câu hỏi không hợp lệ thì kết thúc
+- Kiểm tra danh sách người có thể tham dự có ai không tồn tại không. Nếu có thì sẽ kết thúc
 
 #### Bước 5: Xác định các nguồn
 - /api/v1/quiz/
