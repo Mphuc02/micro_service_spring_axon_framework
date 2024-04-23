@@ -4,6 +4,8 @@
 - Bùi Văn Trung - B20DCCN695
 # Quiz Lab: Hệ thống cho phép tạo, thực hiện gói các câu hỏi trắc nghiệm
 
+# I. Phân tích quy trình nghiệp vụ bài toán
+
 ## Case study
 - Trang web trắc nghiệm trực tuyến với mục tiêu phục vụ mọi đối tượng người dùng, từ học sinh, sinh viên đến những người muốn kiểm tra kiến thức hoặc thử thách bản thân. Trang web cung cấp một phạm vi đa dạng của các chủ đề trắc nghiệm để đáp ứng nhu cầu học tập và giải trí của mọi người
 
@@ -77,8 +79,12 @@ Các hành động sau xảy ra bên trong Task service Create Quiz
 - Đọc file excel để lấy ra danh sách các câu hỏi của bài quiz, nếu file không hợp lệ hoặc câu hỏi không hợp lệ thì kết thúc
 - Kiểm tra danh sách người có thể tham dự có ai không tồn tại không. Nếu có thì sẽ kết thúc
 
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/4b1c6890-7c8d-4644-93b5-61a9a172befe)
+- Hành động khởi tạo 1 bài quiz được dịch thành 1 ứng viên năng lực dịch vụ đơn giản có tên là Start là 1 thành phần của Task service CreateQuiz
+
 #### Bước 5: Xác định các nguồn
 - /api/v1/quiz/
+- /api/v1/auth/authenticated/
 
 * Xác định rõ hơn các thành phần nguồn /api/v1/quiz/ để liên kết tính chất của logic xử lý nghiệp vụ toàn cục
 * Thiết lập một số ánh xạ sơ bộ giữa các nguồn đã xác định và thực thể
@@ -86,11 +92,21 @@ Các hành động sau xảy ra bên trong Task service Create Quiz
 | Entity  | Resource   |
 |---|---|
 | Quiz | /api/v1/quiz |
-| 	|	|
+| Auth	|	/api/v1/auth/authenticated/|
   
 #### Bước 6: Liên kết khả năng dịch vụ với nguồn và phương pháp
-- Dịch vụ Quiz<br>
-![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/7a6f0e04-5800-4da6-b627-e864ef61fe84)
+**Task service CreateQuiz<br>**
+- Nghiệp vụ đầu vào để bắt đầu quy trình nghiệp vụ bài toán<br>
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/7c90c0ab-b813-48bd-bdc6-72d6cf166965)
+
+**Auth**
+- Lấy thông tin đăng nhập của người dùng<br>
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/805683f4-19a8-47de-9e9f-098738f3c8cc)
+
+**Quiz**
+- Lưu thông tin bài quiz<br>
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/008d18e8-5c25-44ae-84be-ca3197860e31)
+
 
 #### Bước 7: Áp dụng hướng dịch vụ
 - Tính tự chủ của dịch vụ:
@@ -105,38 +121,40 @@ Các hành động sau xảy ra bên trong Task service Create Quiz
  
 #### Bước 8: Xác định ứng viên tổ hợp dịch vụ
 - Dịch vụ: Tạo bài quiz<br>
-![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/a3fae621-1e1e-4355-a090-3b9b9d2cd145)
-
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/b799e5e2-0700-467d-886b-b47641c9ae03)
 
 #### Bước 9: Phân tích yêu cầu xử lý
 - Các hành động xác nhận:
-  * Gửi thông báo báo quiz không hợp lệ<br>
-  * Lấy thông tin người dùng đã đăng nhập
+  * Gửi thông báo báo quiz không hợp lệ, điều này sẽ được trả về sau khi người dùng yêu cầu<br>
     => Ko cần thêm utility-centric functions <br>
-    => Cần 1 micro service Xác thực đăng nhập
+
 #### Bước 10: Xác định ứng viên dịch vụ tiện ích
 - Hành động gửi thông báo quiz không hợp lệ và gửi thông báo quiz thành công đều được trả về khi người dùng gửi yêu cầu nền không cần thêm dịch vụ thông báo
 
 #### Bước 11: Xác định ứng viên MicroService
-- Dịch vụ xác thực đăng nhập
+- Không có ứng viên microservice
 
 #### Bước 12: Áp dụng hướng dịch vụ
-- Bước này giống bước 7, xác định có thêm dịch vụ Xác thực đăng nhập
+- Bước này giống bước 7, không xác định thêm ứng viên dịch vụ nào khác
 
 #### Bước 13: Áp dụng các ứng viên tổ hợp dịch vụ
-- Ứng viên tổ hợp dịch vụ Quiz đã được mở rộng so với bước 8, sau khi ở bước 9 bước 10 chúng ta xác định thêm được dịch vụ tiện ích là dịch vụ Auth
-- Thêm tầng Utility Service Notification
+- Xem lại các kịch bản ứng viên tổ hợp dịch vụ đã xác định ở Bước 8
 
-![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/fbd7cb12-2d86-477a-a47a-87c5fb1147c3)
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/b799e5e2-0700-467d-886b-b47641c9ae03)
 
 #### Bước 14: Kiểm tra tên resource và phân nhóm khả năng dịch vụ
 - Mô hình Rest Service hiện tại
-  * Tầng Task service: Quiz Service, Auth Service
-  * Tầng Entity service: Quiz, Question, Choice User
+  * Tầng Task service: CreateQuiz
+  * Tầng Entity service: Quiz, Auth
   * Tầng Utility Service: không có
-
+    
 | Checklist  | Kết quả   |
 |---|---|
 |Tên resource   | Hợp lệ |
 |Gom nhóm   |  Hợp lệ   |
 |Dư thừa   |  Không |
+
+## II. Thiết kế theo REST SERVICE
+
+
+
