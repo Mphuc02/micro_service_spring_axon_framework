@@ -5,6 +5,7 @@
     <file type="web" url="file://$PROJECT_DIR$/api_gateway" />
     <file type="web" url="file://$PROJECT_DIR$/auth" />
     <file type="web" url="file://$PROJECT_DIR$/common_service" />
+    <file type="web" url="file://$PROJECT_DIR$/CreateQuiz" />
     <file type="web" url="file://$PROJECT_DIR$/discovery_server" />
     <file type="web" url="file://$PROJECT_DIR$/quiz" />
   </component>

@@ -1,20 +1,12 @@
 
 Ñ
 Tcommon_service/src/main/java/dev/common_service/handler/EventHandlerInterceptor.java,3\c\3c8ee518cc8fcf7aaa54e68c67d92fdbefab90c2
-y
-Iquiz_service/src/main/java/dev/quiz_lab/command/rest/QuizCommandRest.java,2\8\28c891a8826a8c39ed01f7a5f505a2a304487497
-{
-Kquiz_service/src/main/java/dev/quiz_lab/command/event/QuizEventHandler.java,3\3\3388c3d0c7913fa42d9031871a009e73451e9f83
 Å
 Qcommon_service/src/main/java/dev/common_service/handler/ExceptionRestHandler.java,7\d\7d493b5310abd25b8c506fe704c65a74405353b2
 v
 Fcommon_service/src/main/java/dev/common_service/config/AxonConfig.java,a\f\afc0d3f147df8d0543ba5b7273a00e14bf298b77
-Ç
-Rauth_service/src/main/java/dev/auth_service/query/projections/UserProjections.java,d\9\d9f07f682fd6f7440669ecd29932c39d13e1ac07
 à
 Xcommon_service/src/main/java/dev/common_service/exception/ObjectPropertiesException.java,d\7\d7ef7a77569ed111a19aa6940465624ccd047523
-}
-Mauth_service/src/main/java/dev/auth_service/command/rest/AuthCommandRest.java,7\2\720b3eb729909e1a7763edcef5595573bd298328
 A
 auth/build.gradle,5\b\5b41a5026a94a2ff4a3d5862eb87dbe0a6291565
 D
@@ -31,8 +23,6 @@ r
 BCreateQuiz/src/main/java/dev/createquiz/config/SecurityConfig.java,a\2\a2be90f4783f5e9a1692f8d693205041004d5416
 q
 Aquiz/src/main/java/dev/quiz_lab/common/config/SecurityConfig.java,a\f\afb48189db9a197fa6e1ecbbcb0823ae676d19ec
-q
-ACreateQuiz/src/main/java/dev/createquiz/config/dto/ChoiceDTO.java,3\3\334f741f3232e0c5a03f9db9ad8e814cdf7b0e1b
 j
 :CreateQuiz/src/main/java/dev/createquiz/dto/ChoiceDTO.java,8\4\848e4b5e8e5d17117b190852eebd6d51df640939
 l
@@ -45,13 +35,9 @@ d
 4quiz/src/main/java/dev/quiz_lab/QuizApplication.java,2\2\22cfe644c4f573be22a0f0756b9e191c64d3800a
 q
 ACreateQuiz/src/main/java/dev/createquiz/rest/QuizCommandRest.java,c\7\c7ba98a3e600148a3c4f918ef103d9b4efba58c1
-v
-FCreateQuiz/src/main/java/dev/createquiz/command/CreateQuizCommand.java,d\a\da6e8a19953827c26e894c80c85d7fe0f8b82938
-j
-:CreateQuiz/src/main/java/dev/createquiz/entity/Choice.java,3\e\3e8523e0c6367ffb459ddeb03d7a449fd18eb53c
-~
-Ncommon_service/src/main/java/dev/common_service/command/CreateQuizCommand.java,a\f\af98e54823f3c4a6bcc44db1cbc5e9ff061e2731
 Ñ
 Tcommon_service/src/main/java/dev/common_service/command/CreateQuizCommonCommand.java,5\4\54f2e5971bcc0b775d3680323666ee12e5f86ef1
 t
 Dquiz/src/main/java/dev/quiz_lab/command/aggregate/QuizAggregate.java,3\d\3df79b2ae26301a96a40dead1a065950351d7179
+s
+Cquiz/src/main/java/dev/quiz_lab/command/event/QuizEventHandler.java,5\6\562946332a17fb72bef6c6c064aa7baabc374085
