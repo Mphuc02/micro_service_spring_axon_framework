@@ -2,76 +2,80 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add new Quiz</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new Quiz</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_quiz.css' %}">
 </head>
-<body>
-    {% include "header.html" %}
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <h3>Add new quiz</h3>
+<br> {% include "header.html" %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <h4 onclick="downloadTemplateProcess()" style="cursor: pointer;" href="">Download template questions</h4>
+<h3>Add new quiz</h3>
+
+<h4 onclick="downloadTemplateProcess()" style="cursor: pointer;" href="">Download template questions</h4>
 
 
-    <p id="error"></p>
+<p id="error"></p>
 
-    <p>Name</p>
-	<input type="text" id="name">
+<p>Name</p>
+<input type="text" id="name">
 
-    <p>Participants</p>
-    <table id="list-participants">
-        <tr>
-            <td><input name="username" type="text"></td>
-            <td><button onclick="deleteRow(this)">Delete</button></td>
-        </tr>
-    </table>
-    <button onclick="addRow()">Add new participant</button>
+<p>Participants</p>
+<table id="list-participants">
+    <tr>
+        <td style="width: 300px;"><input name="username" type="text"></td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+    </tr>
+</table>
+<button onclick="addRow()">Add new participant</button>
+</br>
+</br>
+<h2>Questions</h2>
+</br>
+<input type="file" id="question"> <br>
+<button onclick="saveNewQuizProgress()">Save</button>
 
-    <p>Questions</p>
-    <input type="file" id="question"> <br>
+<script src="{% static 'js/Const.js' %}"></script>
+<script src="{% static 'js/Quiz.js' %}"></script>
+<script src="{% static 'js/Authenticate.js' %}"></script>
+<script>
+    let quiz = new Quiz()
 
-    <button onclick="saveNewQuizProgress()">Save</button>
+    function downloadTemplateProcess() {
+        quiz.downloadTemplate()
+    }
 
-    <script src="{% static 'js/Const.js' %}"></script>
-    <script src="{% static 'js/Quiz.js' %}"></script>
-    <script src="{% static 'js/Authenticate.js' %}"></script>
-    <script>
-        let quiz = new Quiz()
+    function saveNewQuizProgress() {
+        quiz.saveNewQuiz()
+    }
 
-        function downloadTemplateProcess(){
-            quiz.downloadTemplate()
-        }
+    function deleteRow(btn) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
 
-        function saveNewQuizProgress(){
-            quiz.saveNewQuiz()
-        }
-
-        function deleteRow(btn) {
-            var row = btn.parentNode.parentNode;
-            row.parentNode.removeChild(row);
-        }
-
-        function addRow() {
-            var table = document.getElementById("list-participants");
-            var newRow = table.insertRow(table.rows.length);
-            var cell1 = newRow.insertCell(0);
-            var cell2 = newRow.insertCell(1);
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = "username";
-            cell1.appendChild(input);
-            var deleteButton = document.createElement("button");
-            deleteButton.innerHTML = "Delete";
-            deleteButton.onclick = function() {
-                deleteRow(this);
-            };
-            cell2.appendChild(deleteButton);
-        }
-    </script>
+    function addRow() {
+        var table = document.getElementById("list-participants");
+        var newRow = table.insertRow(table.rows.length);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = "username";
+        cell1.appendChild(input);
+        var deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "Delete";
+        deleteButton.onclick = function() {
+            deleteRow(this);
+        };
+        cell2.appendChild(deleteButton);
+    }
+</script>
 </script>
 </body>
+
 </html>

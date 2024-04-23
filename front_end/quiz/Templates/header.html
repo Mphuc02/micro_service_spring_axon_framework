@@ -1,4 +1,3 @@
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <div class="col-lg-4 col-6 text-right">
@@ -6,14 +5,12 @@
         <a id="sigin-option" href="/login"><button type="button" class="btn btn-sm btn-light">Log in</button></a>
 
         <div style="display: none;" id="avatar-option" class="avatar">
-            <img src="/img/admin.png" alt="Avatar"
-                 class="avatar_anh">
+            <img src="/img/admin.png" alt="Avatar" class="avatar_anh">
             <div class="avatar_ndung">
                 <ul class="avatar_menu" id="menu">
                     <li class="avatar-li">
                         <p onclick="logoutProcess()">
-                            <i class="avatar_icon ti-drupal"></i>
-                            Đăng xuất</p>
+                            <i class="avatar_icon ti-drupal"></i> Đăng xuất</p>
                     </li>
                 </ul>
             </div>
@@ -26,11 +23,11 @@
 <script>
     let authenticate = new Authenticate()
 
-    function logInProcess(){
+    function logInProcess() {
         authenticate.authentcicate()
     }
 
-    function logoutProcess(){
+    function logoutProcess() {
         authenticate.logOut()
     }
 </script>

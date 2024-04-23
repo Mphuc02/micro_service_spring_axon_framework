@@ -41,3 +41,5 @@ t
 Dquiz/src/main/java/dev/quiz_lab/command/aggregate/QuizAggregate.java,3\d\3df79b2ae26301a96a40dead1a065950351d7179
 s
 Cquiz/src/main/java/dev/quiz_lab/command/event/QuizEventHandler.java,5\6\562946332a17fb72bef6c6c064aa7baabc374085
+z
+Jauth/src/main/java/dev/auth_service/query/projections/UserProjections.java,3\2\32be69091e2132fc4fa679c248d100867b71522e

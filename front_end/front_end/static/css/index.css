@@ -1,0 +1,20 @@
+/* front_end/static/css/index.css */
+
+
+/* Căn giữa phần có id là "title" */
+
+#title {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+    /* điều chỉnh khoảng cách từ phần title đến header */
+}
+
+
+/* Thay đổi màu nền của trang */
+
+body {
+    background-color: aquamarine;
+    /* Đổi thành mã màu bạn muốn */
+}

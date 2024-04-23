@@ -1,0 +1,86 @@
+/* header.css */
+
+
+/* Reset some default browser styles */
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+li,
+a,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #007bff;
+    /* Blue color */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-group {
+    display: flex;
+    align-items: center;
+    background-color: bisque;
+}
+
+.btn-group a {
+    text-decoration: none;
+}
+
+.btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    color: #007bff;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.avatar {
+    position: relative;
+}
+
+.avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.avatar .avatar_ndung {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: none;
+}
+
+.avatar .avatar_ndung ul {
+    list-style: none;
+}
+
+.avatar .avatar_ndung ul li {
+    padding: 10px;
+}
+
+.avatar .avatar_ndung ul li:hover {
+    background-color: #f4f4f4;
+    cursor: pointer;
+}

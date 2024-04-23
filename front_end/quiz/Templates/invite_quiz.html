@@ -2,34 +2,37 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Share this quiz</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share this quiz</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/invite_quiz' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
 </head>
-<body>
-	{% include "header.html" %}
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<br> {% include "header.html" %}
 
-	<a href="{% url 'play' id %}">Click here to play</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</br>
+<a href="{% url 'play' id %}">Click here to play</a>
 
-    <p>Or scan this to play</p>
-	<!-- (B) GENERATE QR CODE HERE -->
-	<div id="qrcode"></div>
+<p>Or scan this to play</p>
+<!-- (B) GENERATE QR CODE HERE -->
+<div id="qrcode"></div>
 
-	<!-- (C) CREATE QR CODE ON PAGE LOAD -->
+<!-- (C) CREATE QR CODE ON PAGE LOAD -->
 
-    <p id="quiz-id" style="display: none;">{{ id }}</p>
-	<p style="display: none;" id="host">{{host}}</p>
+<p id="quiz-id" style="display: none;">{{ id }}</p>
+<p style="display: none;" id="host">{{host}}</p>
 
-	<script>
-		window.addEventListener("load", () => {
-		var qrc = new QRCode(document.getElementById("qrcode"), $('#host').html() + ':8888/play/' + $('#quiz-id').html());
-		});
-	</script>
+<script>
+    window.addEventListener("load", () => {
+        var qrc = new QRCode(document.getElementById("qrcode"), $('#host').html() + ':8888/play/' + $('#quiz-id').html());
+    });
+</script>
 
-	
+
 </body>
+
 </html>

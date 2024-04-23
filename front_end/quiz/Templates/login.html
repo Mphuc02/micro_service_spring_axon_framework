@@ -2,35 +2,69 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
 </head>
+
 <body>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <h3>Login</h3>
-    <p id="error"></p>
-    <p>Username</p>
-	<input type="text" id="username">
-    <p>Password</p>
-    <input type="password" id="password">
-    <button onclick="logInProcess()">Log in</button>
+    <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>        <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
 
-    <!-- <a href="https://accounts.google.com/v3/signin/identifier?opparams=%253F&dsh=S1258508270%3A1712508992553991&client_id=778566546908-veh4c2m72etbcce7v6dc4uk67ef8b8b9.apps.googleusercontent.com&ddm=0&o2v=2&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Flogin%2Foauth2%2Fcode%2Fgoogle&response_type=code&scope=email+profile&service=lso&state=x0EFOlWVGFjW1AXgUqtDkgqTYI8SBkMszCWp9sNXa48%3D&theme=mn&flowName=GeneralOAuthFlow&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAPyjo1-IO4-G2Ujap1cCl6e2tjpGsAwtwHvO02xFkWgoSh6VSd5TJp6BaqaVPTPPk71WFb1L2b6ggvbKcuK5KeX-7QVur47ZCQEK4B2b-DQRm7PUn8_F4XI_RLyO5Sjkd9QBsRQJIqMoJGPf4KTrX7AaEFbSjuCWgLN_8DXzNBDbcFd_ZHTcLexYGcMhIb1kBpmELsMKFal7RfpJethzqJmRwImeObSfsriTZd_6OK0OWvZMxykxbfa8WTtKtDw1P6WicN-YJ-UHCxki7XtGocmqUCQsc5oWv3wrQ1EMbAwwnVFwa709bfDU14E5SYdMUGtIJeT-6Zf5l6wjBE7TDsWJEXE0Wr5IcGqu9KE_BNHRzM48A_7Ub609CWHHdhJNMj-eLAVUjthisW7ixndSVvP-Theey1aMJe2x52bKro2giTSdaqR6Eh_XvYsOEE2awTUCzjvb46MbeMg1O0LGgFiz1x27w%26flowName%3DGeneralOAuthFlow%26as%3DS1258508270%253A1712508992553991%26client_id%3D778566546908-veh4c2m72etbcce7v6dc4uk67ef8b8b9.apps.googleusercontent.com%26theme%3Dmn%23&app_domain=http%3A%2F%2Flocalhost%3A8080&rart=ANgoxcciPDGy05jy1WCMSdFJ4OZBUhS2VuSYh13Drb1bF5YaqVKbnA29OFr48sNiY9l8pg9x_vPtQa9xG25jwTNvdTw-U9Ok9uUxs6wHRudZDjBMAsmKls0">Login with google</a> -->
-    <a href="{% url "register" %}">Register</a>
+        <div class="signin">
 
+            <div class="content">
+
+                <h2>Sign In</h2>
+                <p id="error"></p>
+
+                <div class="form">
+
+                    <div class="inputBox">
+
+                        <input type="text" id="username" required> <i>Username</i>
+
+                    </div>
+
+                    <div class="inputBox">
+
+                        <input type="password" id="password" required> <i>Password</i>
+
+                    </div>
+
+                    <div class="links"> <a href="{% url 'register' %}">Signup</a>
+
+                    </div>
+
+                    <div class="inputBox">
+                        <!-- <a href="https://accounts.google.com/v3/signin/identifier?opparams=%253F&dsh=S1258508270%3A1712508992553991&client_id=778566546908-veh4c2m72etbcce7v6dc4uk67ef8b8b9.apps.googleusercontent.com&ddm=0&o2v=2&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Flogin%2Foauth2%2Fcode%2Fgoogle&response_type=code&scope=email+profile&service=lso&state=x0EFOlWVGFjW1AXgUqtDkgqTYI8SBkMszCWp9sNXa48%3D&theme=mn&flowName=GeneralOAuthFlow&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAPyjo1-IO4-G2Ujap1cCl6e2tjpGsAwtwHvO02xFkWgoSh6VSd5TJp6BaqaVPTPPk71WFb1L2b6ggvbKcuK5KeX-7QVur47ZCQEK4B2b-DQRm7PUn8_F4XI_RLyO5Sjkd9QBsRQJIqMoJGPf4KTrX7AaEFbSjuCWgLN_8DXzNBDbcFd_ZHTcLexYGcMhIb1kBpmELsMKFal7RfpJethzqJmRwImeObSfsriTZd_6OK0OWvZMxykxbfa8WTtKtDw1P6WicN-YJ-UHCxki7XtGocmqUCQsc5oWv3wrQ1EMbAwwnVFwa709bfDU14E5SYdMUGtIJeT-6Zf5l6wjBE7TDsWJEXE0Wr5IcGqu9KE_BNHRzM48A_7Ub609CWHHdhJNMj-eLAVUjthisW7ixndSVvP-Theey1aMJe2x52bKro2giTSdaqR6Eh_XvYsOEE2awTUCzjvb46MbeMg1O0LGgFiz1x27w%26flowName%3DGeneralOAuthFlow%26as%3DS1258508270%253A1712508992553991%26client_id%3D778566546908-veh4c2m72etbcce7v6dc4uk67ef8b8b9.apps.googleusercontent.com%26theme%3Dmn%23&app_domain=http%3A%2F%2Flocalhost%3A8080&rart=ANgoxcciPDGy05jy1WCMSdFJ4OZBUhS2VuSYh13Drb1bF5YaqVKbnA29OFr48sNiY9l8pg9x_vPtQa9xG25jwTNvdTw-U9Ok9uUxs6wHRudZDjBMAsmKls0">Login with google</a> -->
+                        <input type="submit" onclick="logInProcess()" value="Login">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- partial -->
     <script src="{% static 'js/Const.js' %}"></script>
     <script src="{% static 'js/Authenticate.js' %}"></script>
     <script>
         let authenticate = new Authenticate()
 
-        function logInProcess(){
+        function logInProcess() {
             authenticate.authentcicate()
         }
     </script>
-</script>
+    </script>
 </body>
+
 </html>

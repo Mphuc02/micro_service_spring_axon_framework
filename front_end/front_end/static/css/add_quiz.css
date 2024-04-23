@@ -1,0 +1,105 @@
+/* add_quiz.css */
+
+
+/* Reset some default browser styles */
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+table,
+input,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #020a13;
+}
+
+h4:hover {
+    text-decoration: underline;
+}
+
+#error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+table td {
+    border-bottom: 1px solid #ccc;
+}
+
+button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    color: #007bff;
+    /* Blue color */
+    background-color: #fff;
+    border: 1px solid #007bff;
+    /* Blue color */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #007bff;
+    /* Blue color */
+    color: #fff;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}

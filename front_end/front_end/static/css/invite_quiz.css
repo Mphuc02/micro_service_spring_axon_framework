@@ -1,0 +1,48 @@
+/* CSS for style.css */
+
+
+/* Define styles for the body */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    /* Example background color */
+}
+
+
+/* Define styles for links */
+
+a {
+    color: blue;
+    /* Example link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* Define styles for paragraphs */
+
+p {
+    margin: 10px 0;
+}
+
+
+/* Define styles for the QR code container */
+
+#qrcode {
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+    background-color: #ffffff;
+    /* Example background color */
+    border: 1px solid #000000;
+    /* Example border color */
+}
+
+
+/* Optionally style other elements as needed */
