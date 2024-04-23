@@ -11,6 +11,8 @@ import dev.common_service.exception.ErrorMessages;
 import dev.common_service.exception.NotFoundException;
 import dev.common_service.model.UserCommon;
 import dev.common_service.queries.AuthenticationCommonQuery;
+import dev.common_service.queries.CheckUsersExistQuery;
+import dev.common_service.response.UsersExistResponse;
 import io.jsonwebtoken.MalformedJwtException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +23,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -44,6 +47,22 @@ public class UserProjections {
             throw new BadRequestException(ErrorMessages.AUTHENTICATE_FAIL);
         }
         return jwtService.generateToken(findUserByUserName(authenticateUser.getUserName()));
+    }
+
+    @QueryHandler
+    public UsersExistResponse checkUsers(CheckUsersExistQuery query){
+        List<String> usernames = query.getUsernameList();
+        UsersExistResponse response = new UsersExistResponse();
+        usernames.forEach(username -> {
+            try {
+                findUserByUserName(username);
+            } catch (Exception e) {
+                response.getListError().add(username);
+                response.setSuccess(false);
+            }
+        });
+
+        return response;
     }
 
     @QueryHandler

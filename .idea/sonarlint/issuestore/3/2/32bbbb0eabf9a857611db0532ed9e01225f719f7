@@ -1,8 +1,5 @@
 
-X	java:S125"<This block of commented-out lines of code should be removed.(ì¥¨8ÙˆÕ¶ğ1
-t
-java:S2737/"WAdd logic to this catch clause or eliminate it and rethrow the exception automatically.(ö™û8à²ËÇğ1
-f
-java:S1128"IRemove this unused import 'org.axonframework.commandhandling.CommandBus'.(äéú8Ş¬ĞÇğ1
-j
-java:S1128"MRemove this unused import 'org.axonframework.commandhandling.CommandMessage'.(êˆÓµ8çÅĞÇğ1
+l
+java:S1128"ORemove this unused import 'org.axonframework.config.EventProcessingConfigurer'.(¥÷‰é8ÿâ™Ğğ1
+u
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8€ã™Ğğ1

@@ -155,3 +155,15 @@ Dquiz_service/src/main/java/dev/quiz_lab/command/saga/DeleteSaga.java,8\3\83bd7
 Squiz_service/src/main/java/dev/quiz_lab/common/handler/EventHandlerInterceptor.java,c\e\ce92a785ed338cf5cbf5fb2e6ed9a09cb64ed344
 o
 ?quiz_service/src/main/java/dev/quiz_lab/common/config/Test.java,3\2\32bbbb0eabf9a857611db0532ed9e01225f719f7
+Ñ
+Tcommon_service/src/main/java/dev/common_service/handler/EventHandlerInterceptor.java,3\c\3c8ee518cc8fcf7aaa54e68c67d92fdbefab90c2
+Ü
+Vcommon_service/src/main/java/dev/common_service/handler/CommandInterceptorHandler.java,f\6\f60f967d56b8d97e943ba411a2a5d55cd559ccfb
+Ö
+Uquiz_service/src/main/java/dev/quiz_lab/common/handler/CommandHandlerInterceptor.java,2\c\2cf9b1ceaaffdf3fb1735f51246d01d396e912b2
+É
+Scommon_service/src/main/java/dev/common_service/util/CommandExcuteEceptionUtil.java,a\9\a92f4b4441b6836b11014f8d79cb170bb7e18aec
+Å
+Qcommon_service/src/main/java/dev/common_service/queries/CheckUsersExistQuery.java,c\c\cc9db0487f7a4b88018fd7f2fd783d86887d3ceb
+Ä
+Pcommon_service/src/main/java/dev/common_service/response/UsersExistResponse.java,4\4\44072d2c2320ad597892d47989c6f8d5c6c94a70
