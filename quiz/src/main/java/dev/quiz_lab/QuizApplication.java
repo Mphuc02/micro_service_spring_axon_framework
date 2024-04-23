@@ -9,10 +9,8 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication(scanBasePackages = {"dev.quiz_lab", "dev.common_service"})
 @EnableDiscoveryClient
 @Import(AxonConfig.class)
-public class QuizLabApplication {
-
+public class QuizApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(QuizLabApplication.class, args);
+		SpringApplication.run(QuizApplication.class, args);
 	}
-
 }

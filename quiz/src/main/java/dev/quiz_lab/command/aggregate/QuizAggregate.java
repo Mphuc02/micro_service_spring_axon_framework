@@ -1,6 +1,8 @@
 package dev.quiz_lab.command.aggregate;
 
 
+import com.google.gson.Gson;
+import dev.common_service.command.CreateQuizCommonCommand;
 import dev.common_service.exception.BadRequestException;
 import dev.common_service.exception.ErrorMessages;
 import dev.common_service.util.CommandExcuteEceptionUtil;
@@ -8,8 +10,8 @@ import dev.quiz_lab.command.command.CreateQuizCommand;
 import dev.quiz_lab.command.command.DeleteQuizCommand;
 import dev.quiz_lab.command.event.QuizCreatedEvent;
 import dev.quiz_lab.command.event.QuizDeletedEvent;
+import dev.quiz_lab.common.dto.QuizDTO;
 import lombok.RequiredArgsConstructor;
-import org.axonframework.commandhandling.CommandExecutionException;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -30,6 +32,16 @@ public class QuizAggregate {
             CommandExcuteEceptionUtil.createException(new BadRequestException(ErrorMessages.EXCEL_NOT_VALID));
 
         QuizCreatedEvent event = new QuizCreatedEvent(command.getQuiz(), command.getData(), command.getOwner());
+        apply(event);
+    }
+
+    @CommandHandler
+    public QuizAggregate(CreateQuizCommonCommand command){
+        QuizDTO quiz = new Gson().fromJson(command.getQuiz(), QuizDTO.class);
+        if(command.getData() == null || command.getData().length == 0)
+            CommandExcuteEceptionUtil.createException(new BadRequestException(ErrorMessages.EXCEL_NOT_VALID));
+
+        QuizCreatedEvent event = new QuizCreatedEvent(quiz, command.getData(), command.getOwner());
         apply(event);
     }
 
