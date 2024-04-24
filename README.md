@@ -28,6 +28,7 @@
 - Bấm nút đăng bài quiz
 - Lấy thông tin người gửi người gửi quiz
 - Kiểm tra tính hợp lệ của bài quiz
+- Kiểm tra danh sách người tham gia
 - Lưu thông tin bài quiz vào cơ sở dữ liệu
 - Hiển thị trang mời tham gia bài quiz gồm có đường dẫn tới trang nhằm chơi bài quiz này và 1 mã qr đại diện cho đường link đó
 
@@ -41,6 +42,7 @@
 **-Bấm nút đăng bài quiz<br>**
 **-Lấy thông tin người gửi người gửi quiz<br>**
 **-Kiểm tra tính hợp lệ của bài quiz<br>**
+**- Kiểm tra danh sách người tham gia<br>**
 **-Lưu thông tin bài quiz vào cơ sở dữ liệu<br>**
 - Hiển thị trang mời tham gia bài quiz gồm có đường dẫn tới trang nhằm chơi bài quiz này và 1 mã qr đại diện cho đường link đó
 
@@ -55,18 +57,18 @@
 -Bấm nút đăng bài quiz<br>
 **-Kiểm tra tính hợp lệ của bài quiz<br>**
 **-Lấy thông tin người gửi người gửi quiz<br>**
+**- Kiểm tra danh sách người tham gia<br>**
 **-Lưu thông tin bài quiz vào cơ sở dữ liệu<br>**
 - Hiển thị trang mời tham gia bài quiz gồm có đường dẫn tới trang nhằm chơi bài quiz này và 1 mã qr đại diện cho đường link đó
 
 Các hành động bất khả tri được phân loại như các ứng viên năng lực dịch vụ sơ bộ và được nhóm vào các service thành phần tương ứng như sau:
 - Dịch vụ Xác thực:
-  * Hành động Lấy thông tin người gửi quiz được xem như là một năng lực dịch vụ có tên **getAuthenticatedInfo** là 1 phần của thực thể dịch vụ có tên Auth<br>
-    ![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/1341763f-b339-4f18-877e-d7713c281ea1)
+  * Hành động Lấy thông tin người gửi quiz được xem như là một năng lực dịch vụ có tên **authenticateUser** và kiểm tra danh sách người tham gia với năng lực dịch vụ **checkUsers** là 1 phần của thực thể dịch vụ có tên Auth<br>
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/d31fee65-bc56-4516-8562-4c72ec35a5b1)
 
 - Dịch vụ Quiz:
   * Lưu thông tin bài quiz vào cơ sở dữ liệu là hành động ứng viên cho thực thể dịch vụ có tên Quiz<br>
-  ![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/17cc4d37-350c-404a-8a6d-81a4ac54162b)
-
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/94012d1d-d18b-45cb-96b0-c87cd0af1d99)
 
 #### Bước 4: Logic cụ thể của Quy trình
 **-Kiểm tra tính hợp lệ của bài quiz<br>**
@@ -83,30 +85,28 @@ Các hành động sau xảy ra bên trong Task service Create Quiz
 - Hành động khởi tạo 1 bài quiz được dịch thành 1 ứng viên năng lực dịch vụ đơn giản có tên là Start là 1 thành phần của Task service CreateQuiz
 
 #### Bước 5: Xác định các nguồn
-- /api/v1/quiz/
-- /api/v1/auth/authenticated/
+**- Việc giao tiếp với các service thuộc thông qua 1 MessageQueue và cần các sự kiện sau:**
+<br>-AuthenticationCommonQuery
+<br>-CheckUsersExístQuery
+<br>-CreateQuizCommand
 
-* Xác định rõ hơn các thành phần nguồn /api/v1/quiz/ để liên kết tính chất của logic xử lý nghiệp vụ toàn cục
 * Thiết lập một số ánh xạ sơ bộ giữa các nguồn đã xác định và thực thể
 
 | Entity  | Resource   |
 |---|---|
-| Quiz | /api/v1/quiz |
-| Auth	|	/api/v1/auth/authenticated/|
+| Quiz | CreateQuizCommand |
+| Auth	| AuthenticationCommonQuery <br> CheckUserExistQuery|
   
 #### Bước 6: Liên kết khả năng dịch vụ với nguồn và phương pháp
 **Task service CreateQuiz<br>**
 - Nghiệp vụ đầu vào để bắt đầu quy trình nghiệp vụ bài toán<br>
 ![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/7c90c0ab-b813-48bd-bdc6-72d6cf166965)
 
-**Auth**
-- Lấy thông tin đăng nhập của người dùng<br>
-![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/805683f4-19a8-47de-9e9f-098738f3c8cc)
+**Auth**<br>
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/8fc294da-8948-441f-aeb6-47c5286bbab2)
 
-**Quiz**
-- Lưu thông tin bài quiz<br>
-![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/008d18e8-5c25-44ae-84be-ca3197860e31)
-
+**Quiz**<br>
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/6c91e175-8444-4081-92df-b14bbdac7588)
 
 #### Bước 7: Áp dụng hướng dịch vụ
 - Tính tự chủ của dịch vụ:
@@ -121,32 +121,38 @@ Các hành động sau xảy ra bên trong Task service Create Quiz
  
 #### Bước 8: Xác định ứng viên tổ hợp dịch vụ
 - Dịch vụ: Tạo bài quiz<br>
-![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/b799e5e2-0700-467d-886b-b47641c9ae03)
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/2f2070e0-e0fa-4c87-b26d-d03eef205f13)
 
 #### Bước 9: Phân tích yêu cầu xử lý
 - Các hành động xác nhận:
-  * Gửi thông báo báo quiz không hợp lệ, điều này sẽ được trả về sau khi người dùng yêu cầu<br>
-    => Ko cần thêm utility-centric functions <br>
+  + Hệ thống tự động kiểm tra độ hợp lệ của bài quiz nên không cần thêm chức năng utility-centric nào nữa
 
 #### Bước 10: Xác định ứng viên dịch vụ tiện ích
-- Hành động gửi thông báo quiz không hợp lệ và gửi thông báo quiz thành công đều được trả về khi người dùng gửi yêu cầu nền không cần thêm dịch vụ thông báo
+- Nhóm các bước xử lý xoay quanh tiện ích theo ngữ cảnh được xác định trước
+Với các ứng viên dịch vụ tiện ích, ngữ cảnh (context) chính là mối quan hệ logic giữa các capability candidates trên các yếu tố:
++ Liên kết với một hệ thống kế thừa cụ thể
++ Liên kết với một hoặc nhiều thành phần giải pháp
++ Nhóm logic theo loại chức năng
+Đầu vào chính sẽ là bất kỳ tài nguyên tập trung vào tiện ích nào được xác định trước đó ở Bước 5.
+- Bổ sung thêm ứng viên năng lực dịch vụ **Notification** và phương thức **sendNoti** <br>
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/7996258f-483e-4289-b82e-daba5febe635)
+
 
 #### Bước 11: Xác định ứng viên MicroService
-- Không có ứng viên microservice
+- Như chúng em đã xác định ở bước 9 nên sẽ không có ứng viển microservice
 
 #### Bước 12: Áp dụng hướng dịch vụ
-- Bước này giống bước 7, không xác định thêm ứng viên dịch vụ nào khác
+- Bước này giống bước 7, xác định thêm ứng viên dịch vụ **Notification**
 
 #### Bước 13: Áp dụng các ứng viên tổ hợp dịch vụ
 - Xem lại các kịch bản ứng viên tổ hợp dịch vụ đã xác định ở Bước 8
-
-![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/b799e5e2-0700-467d-886b-b47641c9ae03)
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/e6c252dc-b862-4e5d-80d3-949210f94dee)
 
 #### Bước 14: Kiểm tra tên resource và phân nhóm khả năng dịch vụ
 - Mô hình Rest Service hiện tại
   * Tầng Task service: CreateQuiz
   * Tầng Entity service: Quiz, Auth
-  * Tầng Utility Service: không có
+  * Tầng Utility Service: Notification
     
 | Checklist  | Kết quả   |
 |---|---|
