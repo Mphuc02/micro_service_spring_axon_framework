@@ -73,12 +73,15 @@ public class UserProjections {
 
     @QueryHandler
     public UserCommon query(GetAuthenticationQuery query){
+>>>>>>> Stashed changes
     public UserCommon getAuthenticatedInfo(GetAuthenticationQuery query){
         return getUserFromJwt(query.getJwtToken());
     }
 
     @QueryHandler
     public UserCommon query(AuthenticationCommonQuery query){
+=======
+>>>>>>> Stashed changes
     public UserCommon getAuthenticatedInfo(AuthenticationCommonQuery query){
         return getUserFromJwt(query.getJwtToken());
     }

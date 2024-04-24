@@ -47,8 +47,6 @@ Jauth/src/main/java/dev/auth_service/query/projections/UserProjections.java,3\2
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 I
 notification/build.gradle,8\9\897f4079c8f3c61edbc8a869b26f4f6aef21ff8e
-v
-Fnotification/src/main/java/dev/notification/command/NotiAggregate.java,8\e\8ead098ec853ecd7534dfc2c0d0487838d803f81
 p
 @notification/src/main/java/dev/notification/query/NotiQuery.java,a\4\a466d91007724172ac6ec8b7d9f24f06a5391a77
 u
@@ -61,8 +59,6 @@ Vcommon_service/src/main/java/dev/common_service/queries/AuthenticationCommonQue
 Qcommon_service/src/main/java/dev/common_service/queries/CheckUsersExistQuery.java,c\c\cc9db0487f7a4b88018fd7f2fd783d86887d3ceb
 u
 Ecommon_service/src/main/java/dev/common_service/model/UserCommon.java,3\7\3765845a2be3b8e9ca9be99bf2ac73e48f7043fc
-~
-Ncommon_service/src/main/java/dev/common_service/queries/GetListEmailQuery.java,0\8\08b568f0c6e1832f572df2e25be25285777990a9
 x
 Hnotification/src/main/java/dev/notification/NotificationApplication.java,e\a\eac3c0b9afa5a88d013657f069a2d23b52c324a7
 v
