@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.5'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'dev'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation files('../common_service/build/libs/common_service-0.0.1-plain.jar')
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.1.1'
+	implementation 'com.google.code.gson:gson:2.10.1'
+	implementation group: 'org.axonframework', name: 'axon-spring-boot-starter', version: '4.9.1'
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-email
+	implementation 'org.apache.commons:commons-email:1.6.0'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

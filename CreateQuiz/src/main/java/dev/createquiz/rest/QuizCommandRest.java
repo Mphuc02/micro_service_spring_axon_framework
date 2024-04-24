@@ -8,6 +8,7 @@ import dev.common_service.exception.ObjectPropertiesException;
 import dev.common_service.model.UserCommon;
 import dev.common_service.queries.AuthenticationCommonQuery;
 import dev.common_service.queries.CheckUsersExistQuery;
+import dev.common_service.queries.SendNotiQuery;
 import dev.common_service.response.UsersExistResponse;
 import dev.createquiz.dto.QuizDTO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -70,6 +71,10 @@ public class QuizCommandRest {
         quiz.setId(UUID.randomUUID());
         CreateQuizCommonCommand command = new CreateQuizCommonCommand(new Gson().toJson(quiz), file.getBytes(), loggedUser);
         commandGateway.sendAndWait(command);
+
+        //Gửi noti
+        SendNotiQuery sendNoti = new SendNotiQuery(response.getListError());
+        queryGateway.query(sendNoti, ResponseTypes.instanceOf(String.class)).join();
 
         return ResponseEntity.ok(quiz.getId());
     }

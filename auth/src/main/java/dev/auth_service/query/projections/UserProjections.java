@@ -23,6 +23,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -52,15 +53,20 @@ public class UserProjections {
     @QueryHandler
     public UsersExistResponse checkUsers(CheckUsersExistQuery query){
         List<String> usernames = query.getUsernameList();
+        List<String> emails = new ArrayList<>();
         UsersExistResponse response = new UsersExistResponse();
         usernames.forEach(username -> {
             try {
-                findUserByUserName(username);
+                User user = findUserByUserName(username);
+                emails.add(user.getEmail());
             } catch (Exception e) {
                 response.getListError().add(username);
                 response.setSuccess(false);
             }
         });
+
+        if(response.isSuccess())
+            response.setListError(emails);
 
         return response;
     }
