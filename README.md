@@ -161,6 +161,14 @@ Với các ứng viên dịch vụ tiện ích, ngữ cảnh (context) chính l�
 |Dư thừa   |  Không |
 
 ## II. Thiết kế theo REST SERVICE
+1. Sơ đồ tuần tự<br>
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/3e2720d2-6756-40da-9614-dc4a405ab075)
 
+2. Triển khai
+**Eureka Server<br>**
+- Eureka Server là một máy chủ đăng ký dịch vụ trong hệ thống Microservices. Nó đảm nhiệm việc đặt tên cho mỗi microservice.
+Bởi vì khi có nhiều microservices được triển khai và hoạt động trên nhiều instance khác nhau, không cần phải mã hóa địa chỉ IP cứng của mỗi service, thay vào đó, chúng ta có thể sử dụng tên service đã đăng ký trên Eureka Server để tìm kiếm và truy cập các dịch vụ này. Điều này giúp cho việc quản lý và mở rộng các dịch vụ một cách dễ dàng và hiệu quả hơn => mỗi dịch vụ đăng ký với Eureka và gửi yêu cầu ping tới Eureka server để thông báo rằng nó đang hoạt động.
 
+Các service sau khi được eureka server quản lý<br>
+![image](https://github.com/jnp2018/midproj-503635695/assets/105010427/62802896-ae06-48d1-911c-1d455f1d2455)
 
