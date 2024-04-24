@@ -13,7 +13,6 @@ import dev.common_service.model.UserCommon;
 import dev.common_service.queries.AuthenticationCommonQuery;
 import dev.common_service.queries.CheckUsersExistQuery;
 import dev.common_service.response.UsersExistResponse;
-import io.jsonwebtoken.MalformedJwtException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.queryhandling.QueryHandler;
@@ -22,7 +21,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -72,16 +70,11 @@ public class UserProjections {
     }
 
     @QueryHandler
-    public UserCommon query(GetAuthenticationQuery query){
->>>>>>> Stashed changes
     public UserCommon getAuthenticatedInfo(GetAuthenticationQuery query){
         return getUserFromJwt(query.getJwtToken());
     }
 
     @QueryHandler
-    public UserCommon query(AuthenticationCommonQuery query){
-=======
->>>>>>> Stashed changes
     public UserCommon getAuthenticatedInfo(AuthenticationCommonQuery query){
         return getUserFromJwt(query.getJwtToken());
     }
