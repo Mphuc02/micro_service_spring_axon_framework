@@ -65,3 +65,23 @@ v
 Fnotification/src/main/java/dev/notification/config/SecurityConfig.java,e\7\e765a174ee6a8517785b8fb4b43e7cf8330062f1
 v
 Fquiz/src/main/java/dev/quiz_lab/command/command/CreateQuizCommand.java,a\a\aa132b26f437cc680a5ce89ba9d2cd22c95f3b3a
+V
+&front_end/front_end/static/js/Const.js,d\f\df32b287edc3b9db3a34a88991625a0fcb5af445
+Y
+)front_end/quiz/Templates/invite_quiz.html,5\d\5d0d47347afc962abdaac24591d54444ae0d637a
+O
+front_end/front_end/settings.py,f\c\fc01e5f59ad8491d70bfd77fa07d2e518320dbc9
+Å
+Q.idea/sonarlint/securityhotspotstore/5/d/5d0d47347afc962abdaac24591d54444ae0d637a,c\0\c09200883bcfd20a949b3a04965dd3968d46686b
+w
+G.idea/sonarlint/issuestore/d/f/df32b287edc3b9db3a34a88991625a0fcb5af445,6\9\69345e1115c4b43c2082a40b3ce290683cca4f8c
+Å
+Q.idea/sonarlint/securityhotspotstore/d/f/df32b287edc3b9db3a34a88991625a0fcb5af445,e\4\e490f72be122c17894c8745aa4af87050e875ff0
+Å
+Q.idea/sonarlint/securityhotspotstore/f/c/fc01e5f59ad8491d70bfd77fa07d2e518320dbc9,e\e\eeff2c600914d33366a5a8543bec024860b1cf6f
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+w
+G.idea/sonarlint/issuestore/5/d/5d0d47347afc962abdaac24591d54444ae0d637a,5\e\5ef57fc7cb4d2f8dfd07af5f321e5a8d0bad9097
