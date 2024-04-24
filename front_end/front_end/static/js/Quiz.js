@@ -62,7 +62,7 @@ class Quiz{
         quiz.append('quiz', new Blob([JSON.stringify(data)], { type: 'application/json' }))
 
         $.ajax({
-            url: this.const.quiz.url,
+            url: this.const.quizTaskUrl,
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${jwt}`

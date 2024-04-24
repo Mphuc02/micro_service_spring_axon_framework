@@ -7,7 +7,6 @@ spring:
             routes:
                 - id: auth-service
                   uri: lb://auth-service
-#                  uri: http://localhost:9001
                   predicates:
                     - Path=/api/v1/auth/**
 
@@ -15,6 +14,11 @@ spring:
                   uri: lb://quiz-service
                   predicates:
                     - Path=/api/v1/quiz/**
+
+                - id: create-quiz
+                  uri: lb://create-quiz
+                  predicates:
+                    - Path=/api/v1/create-quiz/**
 
             default-filters:
                 - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE

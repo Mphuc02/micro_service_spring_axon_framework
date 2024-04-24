@@ -1,12 +1,9 @@
 package dev.quiz_lab.command.rest;
 
-import dev.common_service.exception.ObjectPropertiesException;
 import dev.common_service.model.UserCommon;
-import dev.quiz_lab.command.command.CreateQuizCommand;
 import dev.quiz_lab.command.command.DeleteQuizCommand;
 import dev.quiz_lab.common.dto.QuizDTO;
 import dev.quiz_lab.query.queries.GetDetailQuizQuery;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -15,10 +12,7 @@ import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import java.io.IOException;
 import java.util.UUID;
 
 @RestController
@@ -28,23 +22,6 @@ import java.util.UUID;
 public class QuizCommandRest {
     private final CommandGateway commandGateway;
     private final QueryGateway queryGateway;
-
-    @PostMapping()
-    @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<Object>save(@RequestPart MultipartFile file,
-                                @Valid @RequestPart QuizDTO quiz,
-                                BindingResult result) throws IOException{
-
-        if(result.hasErrors()){
-            throw ObjectPropertiesException.build(result.getAllErrors());
-        }
-
-        UserCommon owner = (UserCommon) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        quiz.setId(UUID.randomUUID());
-        CreateQuizCommand command = new CreateQuizCommand(quiz, file.getBytes(), owner);
-        commandGateway.sendAndWait(command);
-        return ResponseEntity.ok(quiz.getId());
-    }
 
     @GetMapping("/play/{id}")
     @PreAuthorize("hasRole('ROLE_USER')")
