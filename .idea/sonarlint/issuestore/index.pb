@@ -95,5 +95,3 @@ k
 ;CreateQuiz/src/main/java/dev/createquiz/dto/MessageDTO.java,1\3\13e62960004820922ff4a8fce37479aadc7b5d59
 o
 ?CreateQuiz/src/main/java/dev/createquiz/rest/WebsocketRest.java,3\1\31159c9c142f0d3cf6e73ec1172bf417ab69fa69
-u
-Eapi_gateway/src/main/java/dev/api_gateway/filter/WebsocketFilter.java,1\c\1c5b2a9cc4e2aa9047f6a140a13604893d21fcb7

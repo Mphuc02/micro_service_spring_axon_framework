@@ -85,48 +85,22 @@
                     <span class="sr-only">Loading...</span>
                 </div>
             </div>
-            <div class="progress progress-icon bar-4">
-                <div class="progress-bar progress-bar-striped bg-secondary" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="progress-icon text-secondary icon-5">
-                <i class="fa-solid fa-circle text-secondary"></i>
-                <div class="spinner-border text-primary d-none spinner-5" style="width: 50px; height: 50px;" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
-            </div>
-            <div class="progress progress-icon bar-5">
-                <div class="progress-bar progress-bar-striped bg-secondary" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="progress-icon icon-6">
-                <i class="fa-solid fa-circle text-secondary"></i>
-                <div class="spinner-border text-primary d-none spinner-6" style="width: 50px; height: 50px;" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
-            </div>
         </div>
 
         <div class="d-flex mt-2">
-            <div class="alert alert-danger bar-title d-none" role="alert">
+            <div class="alert bar-title" role="alert">
                 Lỗi
             </div>
             <div class="bar-hidden"></div>
-            <div class="alert alert-danger bar-title d-none" role="alert">
+            <div class="alert bar-title " role="alert">
                 Lỗi
             </div>
             <div class="bar-hidden"></div>
-            <div class="alert alert-danger bar-title d-none" role="alert">
+            <div class="alert bar-title" role="alert">
                 Lỗi
             </div>
             <div class="bar-hidden"></div>
-            <div class="alert alert-danger bar-title d-none" role="alert">
-                Lỗi
-            </div>
-            <div class="bar-hidden"></div>
-            <div class="alert alert-danger bar-title d-none" role="alert">
-                Lỗi
-            </div>
-            <div class="bar-hidden"></div>
-            <div class="alert alert-danger bar-title d-none" role="alert">
+            <div class="alert bar-title" role="alert">
                 Lỗi
             </div>
             <div class="bar-hidden"></div>
@@ -172,6 +146,25 @@
     }
 
     function saveNewQuizProgress() {
+        for(let index = 1; index < 4; index++){
+            const iTag = icons[index].querySelector('i');
+            iTag.classList.add("fa-solid")
+            iTag.classList.add("fa-circle")
+            iTag.classList.add("text-secondary")
+            iTag.classList.remove('text-success');
+            iTag.classList.remove('fa-circle-check');
+            iTag.classList.remove('text-danger');
+            // turn off spinner
+            spinners[index].classList.add('d-none');
+
+            const divChildBar = bars[index].querySelector('div');
+        
+            divChildBar.classList.add('progress-bar')
+            divChildBar.classList.add('progress-bar-striped')
+            divChildBar.classList.add('bg-secondary')
+            divChildBar.classList.remove('bg-success')
+        }
+
         quiz.saveNewQuiz()
     }
 
@@ -280,13 +273,16 @@
     stompClient.connect({}, function(frame) {
         console.log('Connected: ' + frame);
 
-        stompClient.subscribe('/topic/data-receive', async function(message) {
+        stompClient.subscribe("/topic/service-status", async function(message) {
             console.log('Received data: ' + message.body);
             var data = JSON.parse(message.body);
             console.log(data);
-            const ms = randomInRange(2000, 5000, 1000);
-            await sleep(ms);
-            statusProgress(data.status);
+            if(data.status == true){
+                successService(data.serviceNumber)
+            }
+            else{
+                failService(data.serviceNumber)
+            }
         });
     });
 </script>

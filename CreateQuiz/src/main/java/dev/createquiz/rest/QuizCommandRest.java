@@ -42,7 +42,7 @@ public class QuizCommandRest {
     public ResponseEntity<Object>save(@RequestPart(name = "file") MultipartFile file,
                                       @Valid @RequestPart(name = "quiz") QuizDTO quiz,
                                       BindingResult result,
-                                      HttpServletRequest request) throws IOException{
+                                      HttpServletRequest request) throws IOException, InterruptedException {
         if(result.hasErrors()){
             throw ObjectPropertiesException.build(result.getAllErrors());
         }
@@ -54,30 +54,52 @@ public class QuizCommandRest {
             AuthenticationCommonQuery query = new AuthenticationCommonQuery(UUID.randomUUID(), jwt);
             loggedUser = this.queryGateway.query(query, ResponseTypes.instanceOf(UserCommon.class)).join();
             if (loggedUser == null) {
+                websocketRest.sendServiceStatus(new MessageDTO(1, false));
                 throw new BadRequestException(ErrorMessages.JWT_NOT_INCLUDE);
             }
         }
         else {
+            websocketRest.sendServiceStatus(new MessageDTO(1, false));
             throw new BadRequestException(ErrorMessages.JWT_NOT_INCLUDE);
         }
-        websocketRest.sendServiceStatus(new MessageDTO(1, "", true));
+        websocketRest.sendServiceStatus(new MessageDTO(1, true));
+        Thread.sleep(1000);
 
         //Kiểm tra danh sách người chơi
         CheckUsersExistQuery query = new CheckUsersExistQuery(new ArrayList<>(quiz.getParticipants()));
         UsersExistResponse response = queryGateway.query(query, ResponseTypes.instanceOf(UsersExistResponse.class)).join();
         if(!response.isSuccess()){
             Map<String, Object> participants = Collections.singletonMap("participants", response.getListError());
+            websocketRest.sendServiceStatus(new MessageDTO(2, false));
             throw new ObjectPropertiesException(participants);
         }
+        websocketRest.sendServiceStatus(new MessageDTO(2, true));
+        Thread.sleep(1000);
 
         //Lưu quiz
         quiz.setId(UUID.randomUUID());
         CreateQuizCommonCommand command = new CreateQuizCommonCommand(new Gson().toJson(quiz), file.getBytes(), loggedUser);
-        commandGateway.sendAndWait(command);
+        try {
+            commandGateway.sendAndWait(command);
+        } catch (RuntimeException e) {
+            websocketRest.sendServiceStatus(new MessageDTO(3, true));
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        websocketRest.sendServiceStatus(new MessageDTO(3, true));
+        Thread.sleep(1000);
 
         //Gửi noti
         SendNotiQuery sendNoti = new SendNotiQuery(response.getListError());
-        queryGateway.query(sendNoti, ResponseTypes.instanceOf(String.class)).join();
+        try {
+            queryGateway.query(sendNoti, ResponseTypes.instanceOf(String.class)).join();
+        } catch (RuntimeException e) {
+            websocketRest.sendServiceStatus(new MessageDTO(4, false));
+            e.printStackTrace();
+            throw e;
+        }
+        websocketRest.sendServiceStatus(new MessageDTO(4, true));
+        Thread.sleep(1000);
 
         return ResponseEntity.ok(quiz.getId());
     }

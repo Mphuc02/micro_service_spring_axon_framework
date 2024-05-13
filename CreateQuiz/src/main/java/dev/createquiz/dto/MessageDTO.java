@@ -13,6 +13,5 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MessageDTO {
     private int serviceNumber;
-    private String message;
     private boolean status;
 }
