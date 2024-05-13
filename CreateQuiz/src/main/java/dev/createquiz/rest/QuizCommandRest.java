@@ -10,6 +10,7 @@ import dev.common_service.queries.AuthenticationCommonQuery;
 import dev.common_service.queries.CheckUsersExistQuery;
 import dev.common_service.queries.SendNotiQuery;
 import dev.common_service.response.UsersExistResponse;
+import dev.createquiz.dto.MessageDTO;
 import dev.createquiz.dto.QuizDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -35,6 +36,7 @@ import java.util.UUID;
 public class QuizCommandRest {
     private final CommandGateway commandGateway;
     private final QueryGateway queryGateway;
+    private final WebsocketRest websocketRest;
 
     @PostMapping()
     public ResponseEntity<Object>save(@RequestPart(name = "file") MultipartFile file,
@@ -58,6 +60,7 @@ public class QuizCommandRest {
         else {
             throw new BadRequestException(ErrorMessages.JWT_NOT_INCLUDE);
         }
+        websocketRest.sendServiceStatus(new MessageDTO(1, "", true));
 
         //Kiểm tra danh sách người chơi
         CheckUsersExistQuery query = new CheckUsersExistQuery(new ArrayList<>(quiz.getParticipants()));

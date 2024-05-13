@@ -1,6 +1,6 @@
 class Const{
     constructor(){
-        this.serverIp = "192.168.75.13"
+        this.serverIp = "192.168.1.190"
         this.quizTaskUrl = `http://${this.serverIp}:9000/api/v1/create-quiz`
         this.frontEndUrl = `http://${this.serverIp}:8888`
         this.serverUrl = `http://${this.serverIp}:9000`
@@ -31,6 +31,9 @@ class Const{
                 return this.quiz.url + `/play/${id}`
             }
         },
-        this.jwt = 'jwt'
+        this.jwt = 'jwt',
+        this.webSocket = {
+            url: this.serverUrl + "/web-socket/create-quiz"
+        }
     }
 }

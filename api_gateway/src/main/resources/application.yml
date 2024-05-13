@@ -20,11 +20,17 @@ spring:
                   predicates:
                     - Path=/api/v1/create-quiz/**
 
+                - id: create-quiz-web-socket
+                  uri: lb://create-quiz
+                  predicates:
+                    - Path=/web-socket/create-quiz/**
+
+
             default-filters:
                 - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
             globalcors:
                 cors-configurations:
-                    '[/**]':
+                    '[/api/v1/**]':
                         allowedOrigins: "*"
                         allowedHeaders: "*"
                         allowedMethods:
