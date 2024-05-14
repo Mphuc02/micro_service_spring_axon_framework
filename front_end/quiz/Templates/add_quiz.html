@@ -88,20 +88,20 @@
         </div>
 
         <div class="d-flex mt-2">
-            <div class="alert bar-title" role="alert">
-                Lỗi
+            <div class="alert" role="alert">
+                Auth service: Check user logged
             </div>
             <div class="bar-hidden"></div>
-            <div class="alert bar-title " role="alert">
-                Lỗi
+            <div class="alert" role="alert">
+                Auth service: Check list partcipants
             </div>
             <div class="bar-hidden"></div>
-            <div class="alert bar-title" role="alert">
-                Lỗi
+            <div class="alert" role="alert">
+                Quiz service: Create and save new quiz
             </div>
             <div class="bar-hidden"></div>
-            <div class="alert bar-title" role="alert">
-                Lỗi
+            <div class="alert" role="alert">
+                Notification service: Send notification to participants
             </div>
             <div class="bar-hidden"></div>
         </div>
@@ -154,6 +154,7 @@
             iTag.classList.remove('text-success');
             iTag.classList.remove('fa-circle-check');
             iTag.classList.remove('text-danger');
+            iTag.classList.remove('fa-circle-xmark');
             // turn off spinner
             spinners[index].classList.add('d-none');
 
@@ -259,7 +260,7 @@
         iTag.classList.remove(...classFas);
         iTag.classList.remove('d-none');
         iTag.classList.add('text-danger');
-        iTag.classList.add('fa-circle-check');
+        iTag.classList.add('fa-circle-xmark');
 
         const divChildBar = bars[index].querySelector('div');
     }

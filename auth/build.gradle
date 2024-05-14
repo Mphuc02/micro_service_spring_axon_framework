@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'dev'
-version = '0.0.1-SNAPSHOT'
+version = '1'
 
 java {
 	sourceCompatibility = '17'
@@ -28,6 +28,9 @@ ext {
 
 dependencies {
 	implementation files('../common_service/build/libs/common_service-0.0.1-plain.jar')
+	implementation 'org.springframework.data:spring-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'redis.clients:jedis:5.1.2'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'

@@ -1,6 +1,7 @@
 package dev.createquiz.config;
 
 import dev.createquiz.handler.HandShakeInterceptor;
+import dev.createquiz.properties.FrontEndProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.context.annotation.Configuration;
@@ -9,20 +10,19 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-import java.net.Inet4Address;
-
 @Configuration
 @EnableWebSocketMessageBroker
 @RequiredArgsConstructor
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     private final HandShakeInterceptor handShakeInterceptor;
+    private final FrontEndProperties frontEndProperties;
+
     @SneakyThrows
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        String ip = Inet4Address.getLocalHost().getHostAddress();
         registry
                 .addEndpoint("/web-socket/create-quiz")
-                .setAllowedOrigins("http://" + ip + ":8888")
+                .setAllowedOrigins(frontEndProperties.getFrontEndUrl())
                 .addInterceptors(handShakeInterceptor)
                 .withSockJS();
     }

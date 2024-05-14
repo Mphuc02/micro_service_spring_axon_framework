@@ -47,6 +47,8 @@ public class QuizCommandRest {
             throw ObjectPropertiesException.build(result.getAllErrors());
         }
 
+        Thread.sleep(1000);
+
         //Kiểm tra thông tin đăng nhập
         UserCommon loggedUser;
         String jwt = getJwtFromHeader(request);
@@ -82,9 +84,9 @@ public class QuizCommandRest {
         try {
             commandGateway.sendAndWait(command);
         } catch (RuntimeException e) {
-            websocketRest.sendServiceStatus(new MessageDTO(3, true));
+            websocketRest.sendServiceStatus(new MessageDTO(3, false));
             e.printStackTrace();
-            throw new RuntimeException(e);
+            throw e;
         }
         websocketRest.sendServiceStatus(new MessageDTO(3, true));
         Thread.sleep(1000);

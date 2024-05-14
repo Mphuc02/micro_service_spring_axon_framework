@@ -13,6 +13,7 @@ import dev.common_service.model.UserCommon;
 import dev.common_service.queries.AuthenticationCommonQuery;
 import dev.common_service.queries.CheckUsersExistQuery;
 import dev.common_service.response.UsersExistResponse;
+import dev.common_service.service.RedisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.queryhandling.QueryHandler;
@@ -32,6 +33,7 @@ public class UserProjections {
     private final UserRepository userRepository;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+    private final RedisService redisService;
 
     @QueryHandler
     public String authenticateUser(AuthenticateQuery query) {
@@ -93,14 +95,26 @@ public class UserProjections {
     }
 
     private User findUserByUserName(String userName){
-        return userRepository
+        User user = (User) redisService.get(userName);
+        if(user != null)
+            return user;
+        user = userRepository
                 .findByUserName(userName)
                 .orElseThrow(() -> new NotFoundException(ErrorMessages.AUTHENTICATE_FAIL));
+
+        redisService.save(userName, user);
+        return user;
     }
 
     private User findUserById(UUID id){
-        return userRepository
+        User user = (User) redisService.get(id.toString());
+        if(user != null)
+            return user;
+
+        user = userRepository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException(ErrorMessages.AUTHENTICATE_FAIL));
+        redisService.save(id.toString(), user);
+        return user;
     }
 }

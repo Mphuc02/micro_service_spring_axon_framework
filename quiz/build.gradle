@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'dev'
-version = '0.0.1-SNAPSHOT'
+version = '1'
 
 java {
 	sourceCompatibility = '17'
@@ -23,7 +23,9 @@ repositories {
 
 dependencies {
 	implementation files('../common_service/build/libs/common_service-0.0.1-plain.jar')
-	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client
+	implementation 'org.springframework.data:spring-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'redis.clients:jedis:5.1.2'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.1.1'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'

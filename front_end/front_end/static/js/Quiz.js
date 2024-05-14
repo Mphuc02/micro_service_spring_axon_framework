@@ -70,16 +70,16 @@ class Quiz{
             processData: false, // Không xử lý dữ liệu
             contentType: false, // Không cung cấp kiểu nội dung
             data: quiz,
-            success: (data, textStatus, xhr) => {
+            success: async (data, textStatus, xhr) => {
                 if (xhr.status === 200) {
-                    window.location.href = "/invite/" + xhr.responseText.replaceAll('"', '');
+                    await waitAndRedirect(xhr, 2000);
                 } else {
 
                 }
             },
             error: function(xhr, textStatus, errorThrown) {
                 let error = xhr.responseJSON
-                if(error.participants != null){
+                if(error != null && error.participants != null){
                     alert('Users in below list are not exist: \n' + error.participants)
                 }
                 else{
@@ -88,4 +88,9 @@ class Quiz{
             }
         })
     } 
+}
+
+async function waitAndRedirect(xhr, ms) {
+    await new Promise(resolve => setTimeout(resolve, ms));
+    window.location.href = "/invite/" + xhr.responseText.replace(/"/g, '');
 }

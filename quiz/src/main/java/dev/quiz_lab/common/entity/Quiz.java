@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,7 +16,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-public class Quiz {
+public class Quiz implements Serializable {
     @Id
     @JdbcType(VarcharJdbcType.class)
     private UUID id;

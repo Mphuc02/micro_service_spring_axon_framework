@@ -3,6 +3,7 @@ package dev.auth_service.common.service;
 import dev.auth_service.common.constranst.Const.*;
 import dev.auth_service.common.entity.User;
 import dev.auth_service.common.repository.UserRepository;
+import dev.common_service.service.RedisService;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -31,6 +32,7 @@ public class JwtService {
     private long refreshExpiration;
 
     private final UserRepository userRepository;
+    private final RedisService redisService;
 
     public String extractID(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -81,7 +83,12 @@ public class JwtService {
             return null;
         }
 
-        User user = userRepository.findById(userId).orElse(null);
+        User user = (User) redisService.get(userId.toString());
+        if(user == null){
+            user = userRepository.findById(userId).orElse(null);
+            if(user != null)
+                redisService.save(user.getId().toString(), user);
+        }
 
         if(user != null){
             Claims claims = extractAllClaims(token);
