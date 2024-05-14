@@ -133,3 +133,5 @@ z
 JCreateQuiz/src/main/java/dev/createquiz/properties/FrontEndProperties.java,2\3\23b681fbb61cc07969ab07cb16fd1a4aeaed82be
 B
 docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
+p
+@auth/src/main/java/dev/auth_service/common/constranst/Const.java,2\2\227d0dde4a558777c6f66b3368aa5089883c382c
