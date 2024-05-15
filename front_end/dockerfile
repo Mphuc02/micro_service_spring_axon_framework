@@ -1,0 +1,15 @@
+# Sử dụng Python chính thức làm image base
+FROM python:3.10-slim
+
+# Đặt thư mục làm việc
+WORKDIR /app
+
+# Sao chép và cài đặt các dependencies từ requirements.txt
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Sao chép mã nguồn của ứng dụng vào image
+COPY . /app/
+
+# Chạy migrations và khởi động server
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8888"]

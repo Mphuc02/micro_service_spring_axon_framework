@@ -12,6 +12,6 @@ import org.springframework.context.annotation.Configuration;
 public class FrontEndProperties {
     private String url;
     public String getFrontEndUrl(){
-        return String.format("%s:8888");
+        return String.format("%s:8888", url);
     }
 }

@@ -1,6 +1,6 @@
 class Const{
     constructor(){
-        this.serverIp = "192.168.1.190"
+        this.serverIp = "172.31.26.128"
         this.quizTaskUrl = `http://${this.serverIp}:9000/api/v1/create-quiz`
         this.frontEndUrl = `http://${this.serverIp}:8888`
         this.serverUrl = `http://${this.serverIp}:9000`

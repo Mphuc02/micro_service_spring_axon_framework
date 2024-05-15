@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  front-end:
+    build: .
+    ports:
+      - '8888:8888'
+    volumes:
+      - .:/app
+    command: python manage.py runserver 0.0.0.0:8888

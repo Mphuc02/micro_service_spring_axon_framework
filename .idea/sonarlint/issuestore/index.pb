@@ -135,3 +135,5 @@ B
 docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
 p
 @auth/src/main/java/dev/auth_service/common/constranst/Const.java,2\2\227d0dde4a558777c6f66b3368aa5089883c382c
+L
+front_end/docker-compose.yml,1\b\1b6a48ec180783943cd1f8813e41ec8c866a5c4c
