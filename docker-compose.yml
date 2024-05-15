@@ -119,7 +119,7 @@ services:
             AXON_SERVER_PORT: 8124
             front-end.url: http://front-end
         networks:
-            - quiz-lab
+            - quiz-labúh
 
 volumes:
     auth_service:
