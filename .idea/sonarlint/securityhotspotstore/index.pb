@@ -137,3 +137,19 @@ p
 @auth/src/main/java/dev/auth_service/common/constranst/Const.java,2\2\227d0dde4a558777c6f66b3368aa5089883c382c
 L
 front_end/docker-compose.yml,1\b\1b6a48ec180783943cd1f8813e41ec8c866a5c4c
+?
+quiz/.gitignore,3\2\321d4003a38d7a36617bc8968ca3414a2b6f8b67
+|
+Lauth/src/main/java/dev/auth_service/common/configuration/SecurityConfig.java,9\b\9bbcc119ca7f92fe96b0b7c2cf4a7ce73e59d1c9
+€
+Pauth/src/main/java/dev/auth_service/common/configuration/AuthenticateConfig.java,0\6\068ecf2976214f59a086296a05589d5133608353
+k
+;auth/src/main/java/dev/auth_service/common/entity/User.java,2\2\2213b2c2c9ddec9e754086264e30f6f50d971e40
+k
+;auth/src/main/java/dev/auth_service/common/dto/UserDto.java,6\b\6b02d6cb1b170dadeb9066e54bc5c907d2f105ad
+u
+Eauth/src/main/java/dev/auth_service/command/rest/AuthCommandRest.java,5\e\5ed03371f2b79a8f6163233a13e65dfb2c2ffc9d
+D
+front_end/dockerfile,d\2\d277413ae3684133a5dd9d46bc0f07832e3d9bec
+J
+front_end/requirements.txt,f\3\f3d5802f46fe247be5260f415a0a132c265b31a3

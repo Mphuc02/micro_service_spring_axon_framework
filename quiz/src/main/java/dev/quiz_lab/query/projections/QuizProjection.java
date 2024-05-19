@@ -23,12 +23,9 @@ public class QuizProjection {
 
     @QueryHandler
     public QuizDTO findById(GetDetailQuizQuery query){
-        Quiz entity = (Quiz) redisService.get(query.getId().toString());
-        if(entity == null){
-            entity = quizRepository.findById(query.getId())
+            Quiz entity = quizRepository.findById(query.getId())
                     .orElseThrow(() -> new NotFoundException(ErrorMessages.QUIZ_NOT_EXIST));
             redisService.save(query.getId().toString(), entity);
-        }
 
         return new QuizDTO(entity);
     }

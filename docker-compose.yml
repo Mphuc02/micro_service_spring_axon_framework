@@ -1,6 +1,6 @@
 services:
     front-end:
-        build: .
+        image: 'front_end:latest'
         ports:
             - '8888:8888'
         volumes:

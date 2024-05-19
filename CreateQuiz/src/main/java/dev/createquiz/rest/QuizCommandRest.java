@@ -42,12 +42,10 @@ public class QuizCommandRest {
     public ResponseEntity<Object>save(@RequestPart(name = "file") MultipartFile file,
                                       @Valid @RequestPart(name = "quiz") QuizDTO quiz,
                                       BindingResult result,
-                                      HttpServletRequest request) throws IOException, InterruptedException {
+                                      HttpServletRequest request) throws IOException{
         if(result.hasErrors()){
             throw ObjectPropertiesException.build(result.getAllErrors());
         }
-
-        Thread.sleep(1000);
 
         //Kiểm tra thông tin đăng nhập
         UserCommon loggedUser;
@@ -65,7 +63,6 @@ public class QuizCommandRest {
             throw new BadRequestException(ErrorMessages.JWT_NOT_INCLUDE);
         }
         websocketRest.sendServiceStatus(new MessageDTO(1, true));
-        Thread.sleep(1000);
 
         //Kiểm tra danh sách người chơi
         CheckUsersExistQuery query = new CheckUsersExistQuery(new ArrayList<>(quiz.getParticipants()));
@@ -76,7 +73,6 @@ public class QuizCommandRest {
             throw new ObjectPropertiesException(participants);
         }
         websocketRest.sendServiceStatus(new MessageDTO(2, true));
-        Thread.sleep(1000);
 
         //Lưu quiz
         quiz.setId(UUID.randomUUID());
@@ -89,7 +85,6 @@ public class QuizCommandRest {
             throw e;
         }
         websocketRest.sendServiceStatus(new MessageDTO(3, true));
-        Thread.sleep(1000);
 
         //Gửi noti
         SendNotiQuery sendNoti = new SendNotiQuery(response.getListError());
@@ -101,7 +96,6 @@ public class QuizCommandRest {
             throw e;
         }
         websocketRest.sendServiceStatus(new MessageDTO(4, true));
-        Thread.sleep(1000);
 
         return ResponseEntity.ok(quiz.getId());
     }
